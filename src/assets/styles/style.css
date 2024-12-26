@@ -1,0 +1,104 @@
+@import url(../fonts/pretendard.css);
+
+body {
+  margin: 0;
+  font-family: "Pretendard";
+  font-size: 18px;
+}
+
+div, input, section {
+  box-sizing: border-box;
+}
+
+p,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+ul,
+li,
+a,
+button {
+  margin: 0;
+  padding: 0;
+}
+button {
+  border: none;
+  padding: 0;
+}
+ul, li {
+  list-style: none;
+}
+.title {
+  color: var(
+    --Color-System-Gray-Scale-Gray-900,
+    var(--Gray-Scale-Gray-900, #292929)
+  );
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 12px;
+}
+.title1 {
+  color: var(
+    --Color-System-Gray-Scale-Gray-900,
+    var(--Gray-Scale-Gray-900, #292929)
+  );
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.title2 {
+  color: var(
+    --Color-System-Gray-Scale-Gray-900,
+    var(--Gray-Scale-Gray-900, #292929)
+  );
+
+  font-size: 28px;
+
+  font-weight: 500;
+  line-height: normal;
+}
+.sub-title1 {
+  color: var(
+    --Color-System-Gray-Scale-Gray-800,
+    var(--Gray-Scale-Gray-800, #343434)
+  );
+  font-size: 22px;
+  font-weight: 600;
+  line-height: normal;
+}
+.text1 {
+  color: var(
+    --Color-System-Gray-Scale-Gray-800,
+    var(--Gray-Scale-Gray-800, #343434)
+  );
+  font-family: Pretendard;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.text3 {
+  color: var(
+    --Color-System-Gray-Scale-Gray-800,
+    var(--Gray-Scale-Gray-800, #343434)
+  );
+  font-size: 20px;
+  font-weight: 400;
+  line-height: normal;
+}
+.caption {
+  color: var(
+    --Color-System-Gray-Scale-Gray-800,
+    var(--Gray-Scale-Gray-800, #343434)
+  );
+  text-align: center;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: normal;
+}
