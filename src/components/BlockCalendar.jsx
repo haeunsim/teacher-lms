@@ -1,3 +1,4 @@
+import moment from "moment";
 import React from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -8,9 +9,21 @@ const CalendarContainer = styled.div`
   text-align: center;
   padding: 20px 72px 23px;
   border-radius: 36px;
+  height: 498px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   h3 {
+    font-weight: 400;
     padding-bottom: 16px;
+    color: #525252;
+
+    span {
+      font-weight: 600;
+      color: #292929;
+    }
   }
   .react-calendar {
     border: none;
@@ -18,7 +31,7 @@ const CalendarContainer = styled.div`
     max-width: 500px;
     margin: 0 auto;
     border-radius: 36px;
-    padding: 30px;
+    padding: 10px 20px;
   }
 
   .react-calendar__tile {
@@ -89,7 +102,7 @@ const BlockCalendar = () => {
     "2024-12-28": 0,
     "2024-12-29": 0,
     "2024-12-30": 0,
-    "2024-12-31": 0,
+    "2024-12-31": 1,
   };
 
   // 타일에 스타일을 적용하는 함수
@@ -97,7 +110,6 @@ const BlockCalendar = () => {
     const formattedDate = date.toISOString().split("T")[0];
     const lessons = lessonData[formattedDate];
 
-    // null
     if (lessons !== undefined || lessons === 0) {
       return (
         <LessonTile lessonCount={lessons || 0}>
@@ -105,38 +117,40 @@ const BlockCalendar = () => {
         </LessonTile>
       );
     }
-    
+
     return null;
   };
 
   return (
-    <CalendarContainer>
-      <div>
-        <h3>12월 현재까지 총 12회 수업을 진행했어요</h3>
-        <Calendar
-          tileContent={tileContent}
-          locale="ko-KR"
-          view="month"
-          minDetail="month"
-          maxDetail="month"
-          showNavigation={false}
-          formatDay={() => ''}
-          formatShortWeekday={(locale, date) => {
-            const weekdays = [
-              "Sun.",
-              "Mon.",
-              "Tue.",
-              "Wed.",
-              "Thu.",
-              "Fri.",
-              "Sat.",
-            ];
-            return weekdays[date.getDay()];
-          }}
-
-        />
-      </div>
-    </CalendarContainer>
+    <>
+      <h2>실시현황</h2>
+      <CalendarContainer>
+        <div>
+          <h3><span>12월 현재</span>까지 <span>총 12회</span> 수업을 진행했어요</h3>
+          <Calendar
+            tileContent={tileContent}
+            locale="ko-KR"
+            view="month"
+            minDetail="month"
+            maxDetail="month"
+            showNavigation={false}
+            formatDay={(locale, date) => moment(date).format("DD")}
+            formatShortWeekday={(locale, date) => {
+              const weekdays = [
+                "Sun.",
+                "Mon.",
+                "Tue.",
+                "Wed.",
+                "Thur.",
+                "Fri.",
+                "Sat.",
+              ];
+              return weekdays[date.getDay()];
+            }}
+          />
+        </div>
+      </CalendarContainer>
+    </>
   );
 };
 

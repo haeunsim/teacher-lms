@@ -58,16 +58,9 @@ const DropdownItem = styled.li`
   }
 `;
 
-const Dropdown = () => {
+const Dropdown = ({ label, options }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState(">");
-
-  const options = [
-    "1. 힘과 우리 생활",
-    "2. 동물의 생활",
-    "3. 식물의 생활",
-    "4. 생물의 한살이",
-  ];
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
@@ -80,7 +73,7 @@ const Dropdown = () => {
     <DropdownContainer>
       <DropdownHeader onClick={toggleDropdown}>
         <span></span>
-        <p>대단원명</p>
+        { label ? <p>{label}</p> : <>selected</>}
         <span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -101,7 +94,7 @@ const Dropdown = () => {
       </DropdownHeader>
 
       <DropdownList isOpen={isOpen}>
-        {options.map((option, index) => (
+        {options?.map((option, index) => (
           <DropdownItem key={index} onClick={() => handleSelect(option)}>
             {option}
           </DropdownItem>

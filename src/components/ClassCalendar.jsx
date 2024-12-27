@@ -10,6 +10,8 @@ const CalendarContainer = styled.div`
   padding: 20px 72px 23px;
   border-radius: 36px;
 
+  /* overflow: hidden; */
+
   h3 {
     padding-bottom: 16px;
   }
@@ -21,7 +23,6 @@ const CalendarContainer = styled.div`
     border-radius: 36px;
     padding: 30px;
   }
-
   .react-calendar__tile {
     position: relative;
     height: 50px;
@@ -39,14 +40,12 @@ const LessonTile = styled.div`
   color: white;
   border-radius: 50px;
   padding: 2px 0;
-  border: 1px dashed #FE575C;
-  
+  border: 1px dashed #fe575c;
+
   width: 30px;
   height: 30px;
 
-  ${({ lessonCount }) => {
-    
-  }}
+  ${({ lessonCount }) => {}}
 `;
 
 const ClassCalendar = () => {
@@ -68,40 +67,39 @@ const ClassCalendar = () => {
     const lessons = lessonData[formattedDate];
 
     if (lessons !== undefined && lessons > 0) {
-      return (
-        <LessonTile lessonCount={lessons}></LessonTile>
-      );
+      return <LessonTile lessonCount={lessons}></LessonTile>;
     }
     return null;
   };
 
   return (
     <>
-    <CalendarContainer>
-      <div>
-        <Calendar
-          tileContent={tileContent}
-          locale="ko-KR"
-          view="month"
-          minDetail="month"
-          maxDetail="month"
-          showNavigation={true}
-          formatShortWeekday={(locale, date) => {
-            const weekdays = [
-              "Sun.",
-              "Mon.",
-              "Tue.",
-              "Wed.",
-              "Thur.",
-              "Fri.",
-              "Sat.",
-            ];
-            return weekdays[date.getDay()];
-          }}
-          formatDay={(locale, date) => moment(date).format("DD")}
-        />
-      </div>
-    </CalendarContainer>
+      <h2>수업 캘린더</h2>
+      <CalendarContainer>
+        <div>
+          <Calendar
+            tileContent={tileContent}
+            locale="ko-KR"
+            view="month"
+            minDetail="month"
+            maxDetail="month"
+            showNavigation={true}
+            formatShortWeekday={(locale, date) => {
+              const weekdays = [
+                "Sun.",
+                "Mon.",
+                "Tue.",
+                "Wed.",
+                "Thur.",
+                "Fri.",
+                "Sat.",
+              ];
+              return weekdays[date.getDay()];
+            }}
+            formatDay={(locale, date) => moment(date).format("DD")}
+          />
+        </div>
+      </CalendarContainer>
     </>
   );
 };

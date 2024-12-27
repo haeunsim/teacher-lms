@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import Chart from "chart.js/auto";
+import Dropdown from "./common/Dropdown";
 
 const Container = styled.div`
   background: #f1f8ff;
@@ -92,11 +93,20 @@ const LineGraph = () => {
     };
   }, []);
 
+  const options = [
+    "국어",
+    "사회",
+    "과학",
+  ];
+
   return (
-    <Container>
-      <div>과목 전체</div>
-      <canvas ref={chartRef}></canvas>
-    </Container>
+    <>
+      <h2>수업 분석</h2>
+      <Container>
+        <Dropdown label="과목 전체" options={options} />
+        <canvas ref={chartRef}></canvas>
+      </Container>
+    </>
   );
 };
 

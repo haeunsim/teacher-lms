@@ -39,13 +39,13 @@ const ClassChange = () => {
 
   const data = [
     {
-      no: "999",
-      reason: "전출",
-      classInfo: "0-0",
-      studentId: "000",
-      studentName: "이학생",
-      date: "0000.00.00",
-      status: "신청",
+      순번: "999",
+      신청사유: "전출", // reason
+      학급정보: "0-0", // classInfo
+      학생번호: "000", // studentId
+      학생명: "이학생", // studentName
+      신청일: "0000.00.00", // date
+      신청: "신청", // status
     },
   ];
 

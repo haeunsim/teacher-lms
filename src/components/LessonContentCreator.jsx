@@ -77,6 +77,13 @@ const Table = styled.table`
 `;
 
 const LessonContentCreator = () => {
+  const options = [
+    "1. 힘과 우리 생활",
+    "2. 동물의 생활",
+    "3. 식물의 생활",
+    "4. 생물의 한살이",
+  ];
+
   return (
     <Container>
       <section>
@@ -141,7 +148,7 @@ const LessonContentCreator = () => {
               <input type="radio" name="subject" value="영어" /> 영어
             </label>
           </RadioCell>
-          <Dropdown />
+          <Dropdown label="대단원명" options={options}/>
         </RadioList>
 
         <ContentWrap>

@@ -1,5 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import {
+  useReactTable,
+  getCoreRowModel,
+  flexRender,
+} from "@tanstack/react-table";
 
 const BasicTable = styled.table`
   width: 100%;
@@ -38,30 +43,59 @@ const Td = styled.td`
   }
 `;
 
-const BasicTables = ({ headers = [], data = [] }) => {
+const BasicTables = ({ headers, data }) => {
+  const columns = React.useMemo(
+    () =>
+      headers.map((header) => ({
+        header: header.label,
+        accessorKey: header.accessor || header.label,
+        size: header.width,
+        cell: header.cell
+          ? ({ row }) => header.cell(row.original)
+          : ({ getValue }) => getValue(),
+      })),
+    [headers],
+  );
+
+  const table = useReactTable({
+    data,
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+  });
+
   return (
     <BasicTable>
       <thead>
-        <Tr>
-          {headers.map((header, index) => (
-            <Th key={index} style={{ width: header.width }}>
-              {header.label}
-            </Th>
-          ))}
-        </Tr>
+        {table.getHeaderGroups().map((headerGroup) => (
+          <Tr key={headerGroup.id}>
+            {headerGroup.headers.map((header) => (
+              <Th
+                key={header.id}
+                style={{ width: header.column.columnDef.size }}
+              >
+                {flexRender(
+                  header.column.columnDef.header,
+                  header.getContext(),
+                )}
+              </Th>
+            ))}
+          </Tr>
+        ))}
       </thead>
       <tbody>
-        {!data.length || !headers.length ? (
+        {!table.getRowModel().rows.length ? (
           <Tr>
-            <Td colSpan={headers.length || 1} style={{ textAlign: "center" }}>
+            <Td colSpan={headers.length} style={{ textAlign: "center" }}>
               데이터가 없습니다.
             </Td>
           </Tr>
         ) : (
-          data.map((row, rowIndex) => (
-            <Tr key={rowIndex}>
-              {Object.values(row).map((cell, cellIndex) => (
-                <Td key={cellIndex}>{cell}</Td>
+          table.getRowModel().rows.map((row) => (
+            <Tr key={row.id}>
+              {row.getVisibleCells().map((cell) => (
+                <Td key={cell.id}>
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </Td>
               ))}
             </Tr>
           ))
