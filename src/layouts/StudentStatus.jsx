@@ -4,7 +4,9 @@ import styled from "styled-components";
 const StudentStatus = () => {
   return (
     <Container>
-      <Title>3학년 1반</Title>
+      <Title>
+        <h2 className="title2">3학년 1반</h2>
+      </Title>
       <ClassRoom>
         <Row>
           <Seat>
@@ -88,8 +90,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.div`
-  color: #292929;
-  font-size: 30px;
+
   font-weight: 500;
   text-align: center;
   padding: 24px 0;

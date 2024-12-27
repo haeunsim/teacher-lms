@@ -6,7 +6,9 @@ body {
   font-size: 18px;
 }
 
-div, input, section {
+div,
+input,
+section {
   box-sizing: border-box;
 }
 
@@ -24,81 +26,83 @@ button {
   margin: 0;
   padding: 0;
 }
+
 button {
   border: none;
   padding: 0;
 }
-ul, li {
+
+ul,
+li {
   list-style: none;
 }
-.title {
-  color: var(
-    --Color-System-Gray-Scale-Gray-900,
-    var(--Gray-Scale-Gray-900, #292929)
-  );
+
+/* .title {
+  color: #292929;
   font-size: 28px;
-  font-style: normal;
   font-weight: 600;
   line-height: normal;
   margin-bottom: 12px;
-}
+} */
+
 .title1 {
-  color: var(
-    --Color-System-Gray-Scale-Gray-900,
-    var(--Gray-Scale-Gray-900, #292929)
-  );
+  color: #292929;
   font-size: 40px;
-  font-style: normal;
   font-weight: 600;
   line-height: normal;
 }
+
 .title2 {
-  color: var(
-    --Color-System-Gray-Scale-Gray-900,
-    var(--Gray-Scale-Gray-900, #292929)
-  );
+  color: #292929;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 30px;
+  
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
+.title3 {
+  color: #292929;
   font-size: 28px;
-
   font-weight: 500;
   line-height: normal;
+  margin-bottom: 12px;
 }
+
 .sub-title1 {
-  color: var(
-    --Color-System-Gray-Scale-Gray-800,
-    var(--Gray-Scale-Gray-800, #343434)
-  );
+  color: #343434;
   font-size: 22px;
   font-weight: 600;
   line-height: normal;
 }
+
 .text1 {
-  color: var(
-    --Color-System-Gray-Scale-Gray-800,
-    var(--Gray-Scale-Gray-800, #343434)
-  );
-  font-family: Pretendard;
+  color: #343434;
   font-size: 24px;
-  font-style: normal;
   font-weight: 600;
   line-height: normal;
 }
+
 .text3 {
-  color: var(
-    --Color-System-Gray-Scale-Gray-800,
-    var(--Gray-Scale-Gray-800, #343434)
-  );
+  color: #343434;
   font-size: 20px;
   font-weight: 400;
   line-height: normal;
 }
+
 .caption {
-  color: var(
-    --Color-System-Gray-Scale-Gray-800,
-    var(--Gray-Scale-Gray-800, #343434)
-  );
-  text-align: center;
+  color: #343434;
   font-size: 13px;
   font-weight: 400;
   line-height: normal;
+  text-align: center;
+}
+
+.sm-point {
+  font-size: 20px;
+  color: #2e90ff;
+  font-weight: 400;
 }

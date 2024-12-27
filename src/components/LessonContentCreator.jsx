@@ -87,7 +87,7 @@ const LessonContentCreator = () => {
   return (
     <Container>
       <section>
-        <h2 className="title">수업 콘텐츠 생성</h2>
+        <h2 className="title2">수업 콘텐츠 생성</h2>
         <RadioList>
           <RadioCell>
             <p>출판사</p>

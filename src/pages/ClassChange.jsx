@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import BasicTables from "../components/common/Table/BasicTable";
+import Dropdown from "../components/common/Dropdown";
+import ErrorModal from "../components/common/ErrorModal";
 
 const ClassChange = () => {
   const [formData, setFormData] = useState({
@@ -50,167 +52,188 @@ const ClassChange = () => {
   ];
 
   return (
+    <>
+    <ErrorModal/>
     <Container>
       <Flex>
         <Item>
-          <Title>전입/편출 학생 입력 양식</Title>
+          <div>
+            <h2 className="title2">전입/편출 학생 입력 양식</h2>
 
-          <Form onSubmit={handleSubmit}>
-            <FormGrid>
-              <FormRow>
-                <Label>(1) 학교명</Label>
-                <div>
-                  <Input
-                    type="text"
-                    name="schoolName"
-                    value={formData.schoolName}
-                    onChange={handleChange}
-                  />
-                  <Suffix>초등학교</Suffix>
-                </div>
-              </FormRow>
+            <Form onSubmit={handleSubmit}>
+              <FormGrid>
+                <FormRow>
+                  <Label>학교명</Label>
+                  <div>
+                    <Input
+                      type="text"
+                      name="schoolName"
+                      value={formData.schoolName}
+                      onChange={handleChange}
+                      className="sm"
+                    />
+                    <Suffix>초등학교</Suffix>
+                  </div>
+                </FormRow>
 
-              <FormRow>
-                <Label>(2) 지역(시/도)</Label>
-                <div>
-                  <Select
-                    name="region"
-                    value={formData.region}
-                    onChange={handleChange}
-                  >
-                    <option value="">지역 선택</option>
-                  </Select>
-                </div>
-              </FormRow>
+                <FormRow>
+                  <Label>지역(시/도)</Label>
+                  <div>
+                    <Select
+                      name="region"
+                      value={formData.region}
+                      onChange={handleChange}
+                    >
+                      <option value="">서울특별시</option>
+                      <option value="">부산광역시</option>
+                      <option value="">인천광역시</option>
+                      <option value="">광주광역시</option>
+                      <option value="">광주광역시</option>
+                      <option value="">대전광역시</option>
+                      <option value="">울산광역시</option>
+                      <option value="">세종특별자치시</option>
+                      <option value="">경기도</option>
+                      <option value="">강원도</option>
+                      <option value="">충청북도</option>
+                      <option value="">충청남도</option>
+                      <option value="">전라북도</option>
+                      <option value="">전라남도</option>
+                      <option value="">경상북도</option>
+                      <option value="">경상남도</option>
+                      <option value="">제주특별자치도</option>
+                    </Select>
+                  </div>
+                </FormRow>
 
-              <FormRow>
-                <Label>(3) 교사명</Label>
-                <div>
-                  <Input
-                    type="text"
-                    name="teacherName"
-                    value={formData.teacherName}
-                    onChange={handleChange}
-                  />
-                </div>
-              </FormRow>
+                <FormRow>
+                  <Label>교사명</Label>
+                  <div>
+                    <Input
+                      type="text"
+                      name="teacherName"
+                      value={formData.teacherName}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </FormRow>
 
-              <FormRow>
-                <Label>(4) 학급정보</Label>
-                <div>
-                  <ShortInput
-                    type="text"
-                    name="grade"
-                    value={formData.grade}
-                    onChange={handleChange}
-                  />
-                  <Suffix>학년</Suffix>
-                  <ShortInput
-                    type="text"
-                    name="class"
-                    value={formData.class}
-                    onChange={handleChange}
-                  />
-                  <Suffix>반</Suffix>
-                </div>
-              </FormRow>
+                <FormRow>
+                  <Label>학급정보</Label>
+                  <div>
+                    <ShortInput
+                      type="text"
+                      name="grade"
+                      value={formData.grade}
+                      onChange={handleChange}
+                    />
+                    <Suffix>학년</Suffix>
+                    <ShortInput
+                      type="text"
+                      name="class"
+                      value={formData.class}
+                      onChange={handleChange}
+                    />
+                    <Suffix>반</Suffix>
+                  </div>
+                </FormRow>
 
-              <FormRow>
-                <Label>(5) 신청사유</Label>
-                <div>
-                  <RadioGroup>
-                    <RadioLabel>
-                      <input
-                        type="radio"
-                        name="studentType"
-                        value="전입생"
-                        checked={formData.studentType === "전입생"}
-                        onChange={handleChange}
-                      />
-                      전입생
-                    </RadioLabel>
-                    <RadioLabel>
-                      <input
-                        type="radio"
-                        name="studentType"
-                        value="전출생"
-                        checked={formData.studentType === "전출생"}
-                        onChange={handleChange}
-                      />
-                      전출생
-                    </RadioLabel>
-                  </RadioGroup>
-                </div>
-              </FormRow>
+                <FormRow>
+                  <Label>신청사유</Label>
+                  <div>
+                    <RadioGroup>
+                      <RadioLabel>
+                        <input
+                          type="radio"
+                          name="studentType"
+                          value="전입생"
+                          checked={formData.studentType === "전입생"}
+                          onChange={handleChange}
+                        />
+                        전입생
+                      </RadioLabel>
+                      <RadioLabel>
+                        <input
+                          type="radio"
+                          name="studentType"
+                          value="전출생"
+                          checked={formData.studentType === "전출생"}
+                          onChange={handleChange}
+                        />
+                        전출생
+                      </RadioLabel>
+                    </RadioGroup>
+                  </div>
+                </FormRow>
 
-              <FormRow>
-                <Label>(6) 학생명</Label>
-                <div>
-                  <Input
-                    type="text"
-                    name="studentName"
-                    value={formData.studentName}
-                    onChange={handleChange}
-                  />
-                </div>
-              </FormRow>
+                <FormRow>
+                  <Label>학생명</Label>
+                  <div>
+                    <Input
+                      type="text"
+                      name="studentName"
+                      value={formData.studentName}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </FormRow>
 
-              <FormRow>
-                <Label>(7) 학생번호</Label>
-                <div>
-                  <ShortInput
-                    type="text"
-                    name="transferCount"
-                    value={formData.transferCount}
-                    onChange={handleChange}
-                  />
-                  <Suffix>번</Suffix>
-                </div>
-              </FormRow>
-            </FormGrid>
+                <FormRow>
+                  <Label>학생번호</Label>
+                  <div>
+                    <ShortInput
+                      type="text"
+                      name="transferCount"
+                      value={formData.transferCount}
+                      onChange={handleChange}
+                    />
+                    <Suffix>번</Suffix>
+                  </div>
+                </FormRow>
+              </FormGrid>
 
-            <ButtonWrapper>
-              <SubmitButton type="submit">제출하기</SubmitButton>
-            </ButtonWrapper>
-          </Form>
+              <ButtonWrapper>
+                <SubmitButton type="submit">제출하기</SubmitButton>
+              </ButtonWrapper>
+            </Form>
+          </div>
         </Item>
         <Item>
-          <Title>
-            처리 현황 <span>(진행 단계 : 신청 - 접수 - 완료)</span>
-          </Title>
           <div>
-            신청 내역이 없습니다.
-            <BasicTables headers={headers} data={data} />
+            <h2 className="title2">
+              처리 현황 <span className="sm-point">(진행 단계 : 신청 - 접수 - 완료)</span>
+            </h2>
+            <div>
+              신청 내역이 없습니다.
+              <BasicTables headers={headers} data={data} />
+            </div>
           </div>
         </Item>
       </Flex>
     </Container>
+    </>
   );
 };
 
 const Container = styled.div`
-  padding: 20px;
   width: 100%;
   margin: 0 auto;
 `;
 
 const Flex = styled.div`
   display: flex;
-  gap: 20px;
   justify-content: space-between;
 `;
+
 const Item = styled.div`
   width: 50%;
-`;
-const Title = styled.h2`
-  margin-bottom: 24px;
-  font-size: 24px;
-  font-weight: 600;
+  height: 100vh;
 
-  span {
-    font-size: 16px;
-    color: #2e90ff;
-    font-weight: 400;
+  &:first-child {
+    border-right: 2px dashed #bababa;
+  }
+
+  > div {
+    padding: 48px 24px;
   }
 `;
 
@@ -225,10 +248,13 @@ const FormGrid = styled.div`
 `;
 
 const FormRow = styled.div`
+  width: 100%;
   display: flex;
   align-items: center;
   border-bottom: 1px solid #e8e8e8;
+
   > div {
+    text-align: center;
     padding: 10px;
     flex: 1;
   }
@@ -236,22 +262,32 @@ const FormRow = styled.div`
 
 const Label = styled.label`
   min-width: 150px;
-  padding: 20px 0;
+  padding: 35px 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #e3f2fd;
+  background-color: #c4e0ff;
   text-align: center;
   color: #525252;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 20px;
 `;
 
 const Input = styled.input`
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  max-width: 300px;
+  width: 220px;
+  background: #f5f5f5;
+  font-size: 20px;
+  color: #2e90ff;
+  font-weight: 500;
+  text-align: center;
+
+  &.sm {
+    width: 140px;
+    margin-right: 10px;
+  }
 `;
 
 const ShortInput = styled(Input)`
@@ -259,19 +295,37 @@ const ShortInput = styled(Input)`
 `;
 
 const Select = styled.select`
+  width: 220px;
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
   flex: 1;
+  background: #f5f5f5;
+  text-align: center;
+  color: #525252;
+  font-size: 20px;
+  font-weight: 500;
+
+  &::active {
+    color: #2e90ff;
+  }
+  ::placeholder {
+    color: #9a9a9a;
+  }
 `;
 
 const Suffix = styled.span`
   margin: 0 4px;
+  color: #525252;
+  font-size: 20px;
+  font-weight: 500;
 `;
 
 const RadioGroup = styled.div`
   display: flex;
-  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
 `;
 
 const RadioLabel = styled.label`
@@ -279,6 +333,9 @@ const RadioLabel = styled.label`
   align-items: center;
   gap: 4px;
   cursor: pointer;
+  font-size: 20px;
+  color: #525252;
+  font-weight: 500;
 `;
 
 const ButtonWrapper = styled.div`
@@ -287,15 +344,14 @@ const ButtonWrapper = styled.div`
 `;
 
 const SubmitButton = styled.button`
-  padding: 8px 24px;
-  background-color: #f0f0f0;
-  border: none;
-  border-radius: 4px;
+  padding: 12px;
+  background-color: #d2d2d2;
+  color: #9a9a9a;
+  border-radius: 8px;
   cursor: pointer;
-
-  &:hover {
-    background-color: #e0e0e0;
-  }
+  font-size: 20px;
+  line-height: 1;
+  width: 220px;
 `;
 
 export default ClassChange;

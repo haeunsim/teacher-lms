@@ -97,12 +97,8 @@ const AppMenu = ({ menuItems }) => {
         <SidebarHeader>
           <p>AI튜터</p>
           <span>교사용 LMS</span>
-          <HideButton
-          //  isOpen={isOpen}
-          //  onClick={toggleSidebar}
-          >
+          <HideButton>
             <ButtonIcon
-              //  isOpen={isOpen}
               xmlns="http://www.w3.org/2000/svg"
               width="32"
               height="32"
@@ -140,6 +136,7 @@ const AppMenu = ({ menuItems }) => {
     </>
   );
 };
+
 const SideNav = styled.div`
   width: 274px;
   /* width: ${(props) => (props.isOpen ? "274px" : "0px")}; */
@@ -236,8 +233,8 @@ const StyledMenuItem = styled.li`
 
     .side-nav-link-ref {
       padding-left: 40px;
-      color: #BABABA;
-        /* svg color #BABABA */
+      color: #bababa;
+      /* svg color #BABABA */
 
       &:hover {
         background: #2e90ff;

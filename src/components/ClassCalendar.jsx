@@ -9,7 +9,6 @@ const CalendarContainer = styled.div`
   text-align: center;
   padding: 20px 72px 23px;
   border-radius: 36px;
-
   /* overflow: hidden; */
 
   h3 {

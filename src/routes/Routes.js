@@ -12,10 +12,7 @@ const Layout = () => {
 
   return (
     <div style={{ display: "flex", height: "100vh" }}>
-      {/* Sidebar */}
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-
-      {/* Main Content */}
       <div style={{ flex: 1, overflow: "auto" }}>
         <main>
           <AllRoutes />

@@ -11,15 +11,15 @@ const Center = styled.div`
   height: 100vh;
   justify-content: center;
 `;
+
 const Title = styled.h4`
-  color: var(--Color-System-Common-Main, #2e90ff);
+  color: #2e90ff;
   text-align: center;
-  font-family: Pretendard;
   font-size: 48px;
-  font-style: normal;
   font-weight: 600;
   line-height: 1.5;
 `;
+
 const Text = styled.div`
   text-align: center;
   font-weight: 600;
@@ -36,6 +36,7 @@ const Text = styled.div`
     color: #15cbf3;
   }
 `;
+
 const ComingSoon = () => {
   return (
     <section>

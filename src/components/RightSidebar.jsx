@@ -2,13 +2,28 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const SidebarContainer = styled.div`
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 506px;
-  height: 100%;
+  max-width: 480px;
+  width: 100%;
   background: var(--main-light-30025, rgba(196, 224, 255, 0.25));
   padding: 24px;
+
+  h4 {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 500;
+    color: #292929;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 22px;
+
+    span {
+      font-size: 20px;
+      font-weight: 600;
+      color: #525252;
+    }
+  }
 `;
 
 const RadioList = styled.div`
@@ -21,10 +36,15 @@ const RadioCell = styled.div`
   border: 1px solid #adadad;
   border-radius: 8px;
   width: 100%;
-  padding: 8px 32px;
+  padding: 8px 24px;
   display: flex;
   gap: 24px;
   font-size: 18px;
+
+  p {
+    text-align: center;
+    width: 50px;
+  }
 
   & input[type="radio"] {
     appearance: none;
@@ -52,13 +72,6 @@ const RadioCell = styled.div`
       background: #2e90ff;
       border-radius: 50%;
     }
-  }
-
-  & label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
   }
 `;
 
@@ -115,56 +128,81 @@ const TextButton = styled.div`
   color: #fff;
 `;
 
+const Flex = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  & label {
+    width: 80px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 8px;
+  }
+`;
+
 const RightSidebar = () => {
   return (
     <SidebarContainer>
-      <h4>과목별 단원 구성</h4>
+      <h4>
+        과목별 단원 구성 <span>(‘교사용 지도서’ 기준)</span>
+      </h4>
 
       <RadioList>
         <RadioCell>
           <p>출판사</p>
-          <label>
-            <input type="radio" name="publisher" value="천재" /> 천재
-          </label>
-          <label>
-            <input type="radio" name="publisher" value="비상" /> 비상
-          </label>
-          <label>
-            <input type="radio" name="publisher" value="미래엔" /> 미래엔
-          </label>
+          <Flex>
+            <label>
+              <input type="radio" name="publisher" value="천재" /> 천재
+            </label>
+            <label>
+              <input type="radio" name="publisher" value="비상" /> 비상
+            </label>
+            <label>
+              <input type="radio" name="publisher" value="미래엔" /> 미래엔
+            </label>
+          </Flex>
         </RadioCell>
 
         <RadioCell>
           <p>학년</p>
-          <label>
-            <input type="radio" name="grade" value="3" /> 3학년
-          </label>
-          <label>
-            <input type="radio" name="grade" value="4" /> 4학년
-          </label>
+          <Flex>
+            <label>
+              <input type="radio" name="grade" value="3" /> 3학년
+            </label>
+            <label>
+              <input type="radio" name="grade" value="4" /> 4학년
+            </label>
+          </Flex>
         </RadioCell>
 
         <RadioCell>
           <p>학기</p>
-          <label>
-            <input type="radio" name="semester" value="1" /> 1학기
-          </label>
-          <label>
-            <input type="radio" name="semester" value="2" /> 2학기
-          </label>
+          <Flex>
+            <label>
+              <input type="radio" name="semester" value="1" /> 1학기
+            </label>
+            <label>
+              <input type="radio" name="semester" value="2" /> 2학기
+            </label>
+          </Flex>
         </RadioCell>
 
         <RadioCell>
           <p>과목</p>
-          <label>
-            <input type="radio" name="subject" value="국어" /> 국어
-          </label>
-          <label>
-            <input type="radio" name="subject" value="사회" /> 사회
-          </label>
-          <label>
-            <input type="radio" name="subject" value="과학" /> 과학
-          </label>
+          <Flex>
+            <label>
+              <input type="radio" name="subject" value="국어" /> 국어
+            </label>
+            <label>
+              <input type="radio" name="subject" value="사회" /> 사회
+            </label>
+            <label>
+              <input type="radio" name="subject" value="과학" /> 과학
+            </label>
+          </Flex>
         </RadioCell>
       </RadioList>
 
