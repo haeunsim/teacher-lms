@@ -53,7 +53,7 @@ const ClassChange = () => {
 
   return (
     <>
-    <ErrorModal/>
+    {/* <ErrorModal/> */}
     <Container>
       <Flex>
         <Item>
@@ -79,28 +79,27 @@ const ClassChange = () => {
                 <FormRow>
                   <Label>지역(시/도)</Label>
                   <div>
-                    <Select
+                  <Select
                       name="region"
                       value={formData.region}
                       onChange={handleChange}
                     >
-                      <option value="">서울특별시</option>
-                      <option value="">부산광역시</option>
-                      <option value="">인천광역시</option>
-                      <option value="">광주광역시</option>
-                      <option value="">광주광역시</option>
-                      <option value="">대전광역시</option>
-                      <option value="">울산광역시</option>
-                      <option value="">세종특별자치시</option>
-                      <option value="">경기도</option>
-                      <option value="">강원도</option>
-                      <option value="">충청북도</option>
-                      <option value="">충청남도</option>
-                      <option value="">전라북도</option>
-                      <option value="">전라남도</option>
-                      <option value="">경상북도</option>
-                      <option value="">경상남도</option>
-                      <option value="">제주특별자치도</option>
+                      <option value="서울특별시">서울특별시</option>
+                      <option value="부산광역시">부산광역시</option>
+                      <option value="인천광역시">인천광역시</option>
+                      <option value="광주광역시">광주광역시</option>
+                      <option value="대전광역시">대전광역시</option>
+                      <option value="울산광역시">울산광역시</option>
+                      <option value="세종특별자치시">세종특별자치시</option>
+                      <option value="경기도">경기도</option>
+                      <option value="강원도">강원도</option>
+                      <option value="충청북도">충청북도</option>
+                      <option value="충청남도">충청남도</option>
+                      <option value="전라북도">전라북도</option>
+                      <option value="전라남도">전라남도</option>
+                      <option value="경상북도">경상북도</option>
+                      <option value="경상남도">경상남도</option>
+                      <option value="제주특별자치도">제주특별자치도</option>
                     </Select>
                   </div>
                 </FormRow>
@@ -121,14 +120,14 @@ const ClassChange = () => {
                   <Label>학급정보</Label>
                   <div>
                     <ShortInput
-                      type="text"
+                      type="number"
                       name="grade"
                       value={formData.grade}
                       onChange={handleChange}
                     />
                     <Suffix>학년</Suffix>
                     <ShortInput
-                      type="text"
+                      type="number"
                       name="class"
                       value={formData.class}
                       onChange={handleChange}
@@ -181,7 +180,7 @@ const ClassChange = () => {
                   <Label>학생번호</Label>
                   <div>
                     <ShortInput
-                      type="text"
+                      type="number"
                       name="transferCount"
                       value={formData.transferCount}
                       onChange={handleChange}
@@ -203,7 +202,7 @@ const ClassChange = () => {
               처리 현황 <span className="sm-point">(진행 단계 : 신청 - 접수 - 완료)</span>
             </h2>
             <div>
-              신청 내역이 없습니다.
+              {/* 신청 내역이 없습니다. */}
               <BasicTables headers={headers} data={data} />
             </div>
           </div>

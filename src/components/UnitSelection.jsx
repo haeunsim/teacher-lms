@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import SearchInput from "../components/common/SearchInput";
+import { unitData } from "./unitData";
 
 const Header = styled.div`
   display: flex;
@@ -44,92 +45,111 @@ const TabContent = styled.div`
 `;
 
 const TabPanel = styled.div`
-  padding: 20px;
+  padding: 20px 20px;
+  background: #fff;
+  border-radius: 0 0 10px 10px;
+`;
+
+const Flex = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #9a9a9a;
+  font-size: 20px;
+  font-weight: 500;
 `;
 
 const Depth1 = styled.div`
   background: #fff;
   cursor: pointer;
   border-radius: 12px;
-  padding: 16px 8px;
+  padding: 16px;
 
-  /* active / on 시
-    background: "var(--main-light-30025, rgba(196, 224, 255, 0.25))", */
+  p {
+    font-size: 20px;
+    color: #333;
+    font-weight: 500;
+  }
 `;
 
 const Depth2 = styled.p`
-  font-size: 18px;
-  color: #333;
-  padding: 10px 0;
-  margin-left: 30px;
+  position: relative;
+  padding: 15px 8px 15px 40px;
+  border-radius: 10px 10px 0 0;
+
+  p {
+    font-size: 20px;
+    color: #333;
+    font-weight: 500;
+  }
+
+  ::before {
+    content: "";
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 10px;
+    height: 10px;
+    border-top: 1px solid #525252;
+    border-right: 1px solid #525252;
+  }
 `;
 
 const Table = styled.table`
   width: 100%;
-  border-collapse: collapse;
   margin-top: 10px;
   border: 2px solid #c4e0ff;
   border-radius: 8px;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  text-align: center;
 `;
 
 const Tr = styled.tr`
-  border-bottom: 2px solid #c4e0ff;
+  font-weight: 400;
+  color: #525252;
+  font-size: 16px;
 `;
 
 const Td = styled.td`
   padding: 12px 8px;
-  text-align: left;
+  border-top: 2px solid #c4e0ff;
+  border-left: 2px solid #c4e0ff;
+
+  &:first-child {
+    border-left: 0;
+  }
+  &:nth-child(4) {
+    text-align: left;
+    width: 60%;
+  }
 `;
 
 const Th = styled.th`
   padding: 12px 8px;
-  text-align: left;
+  border-left: 2px solid #c4e0ff;
+  font-weight: 500;
+
+  &:first-child {
+    border-left: 0;
+  }
 `;
 
 const LessonButton = styled.button`
-  background-color: #007bff;
+  background-color: #2e90ff;
   color: white;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
+  padding: 10px;
+  width: 200px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 18px;
+  font-family: "Pretendard";
 `;
 
 const UnitSelection = () => {
   const [activeTab, setActiveTab] = useState(0);
-
-  const [units, setUnits] = useState([
-    {
-      id: 1,
-      title: "1. 중단원명을 작성해주세요",
-      showUnitTitle: true,
-      showTabPanel: true,
-      lessons: [
-        {
-          order: 1,
-          type: "핵심개념이해",
-          description:
-            "각 놀이학습 기준에서 발견할 수 있는 핵심개념을 찾아보자",
-          class: "시소",
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "1. 중단원명을 작성해주세요",
-      showUnitTitle: true,
-      showTabPanel: true,
-      lessons: [
-        {
-          order: 1,
-          type: "응용학습",
-          description: "학습한 개념을 실생활에 적용해보자",
-          class: "나무",
-        },
-      ],
-    },
-  ]);
-
   const [menuItems] = useState([
     "3-1국어",
     "3-1사회",
@@ -138,27 +158,38 @@ const UnitSelection = () => {
     "4-1사회",
     "4-1과학",
   ]);
+  const [expandedUnits, setExpandedUnits] = useState({});
+  const [expandedSubUnits, setExpandedSubUnits] = useState({});
 
-  // 단원 제목 토글 함수
+  const currentUnits = unitData[menuItems[activeTab]] || [];
+
+  console.log("currentUnits:", currentUnits);
+  console.log("expandedUnits:", expandedUnits);
+
   const toggleUnitTitle = (unitId) => {
-    setUnits(
-      units.map((unit) =>
-        unit.id === unitId
-          ? { ...unit, showUnitTitle: !unit.showUnitTitle }
-          : unit,
-      ),
-    );
+    setExpandedUnits((prev) => ({
+      ...prev,
+      [unitId]: !prev[unitId],
+    }));
+
+    if (expandedUnits[unitId]) {
+      const unit = currentUnits.find((u) => u.id === unitId);
+      if (unit) {
+        unit.subUnits.forEach((subUnit) => {
+          setExpandedSubUnits((prev) => ({
+            ...prev,
+            [subUnit.id]: false,
+          }));
+        });
+      }
+    }
   };
 
-  // 탭 패널 토글 함수
-  const toggleTabPanel = (unitId) => {
-    setUnits(
-      units.map((unit) =>
-        unit.id === unitId
-          ? { ...unit, showTabPanel: !unit.showTabPanel }
-          : unit,
-      ),
-    );
+  const toggleSubUnit = (subUnitId) => {
+    setExpandedSubUnits((prev) => ({
+      ...prev,
+      [subUnitId]: !prev[subUnitId],
+    }));
   };
 
   return (
@@ -174,7 +205,11 @@ const UnitSelection = () => {
             {menuItems.map((tab, index) => (
               <TabItem
                 key={index}
-                onClick={() => setActiveTab(index)}
+                onClick={() => {
+                  setActiveTab(index);
+                  setExpandedUnits({});
+                  setExpandedSubUnits({});
+                }}
                 active={activeTab === index}
               >
                 {tab}
@@ -184,60 +219,69 @@ const UnitSelection = () => {
         </TabMenu>
 
         <TabContent>
-          {activeTab === 0 && (
-            <>
-              {units.map((unit) => (
-                <div key={unit.id}>
-                  <Depth1 onClick={() => toggleUnitTitle(unit.id)}>
-                    1. 대단원명을 작성해주세요.
-                  </Depth1>
+          {currentUnits.map((unit) => (
+            <div key={unit.id}>
+              <Depth1
+                onClick={() => toggleUnitTitle(unit.id)}
+                style={{
+                  background: expandedUnits[unit.id]
+                    ? "rgba(196, 224, 255, 0.25)"
+                    : "#fff",
+                }}
+              >
+                <p>{unit.mainTitle}</p>
+              </Depth1>
 
-                  {unit.showUnitTitle && (
-                    <Depth2 onClick={() => toggleTabPanel(unit.id)}>
-                      {unit.title}
+              {expandedUnits[unit.id] &&
+                unit.subUnits.map((subUnit) => (
+                  <div key={subUnit.id} style={{ marginLeft: "30px" }}>
+                    <Depth2
+                      onClick={() => toggleSubUnit(subUnit.id)}
+                      style={{
+                        background: expandedSubUnits[subUnit.id]
+                          ? "#C4E0FF"
+                          : "transparent",
+                      }}
+                    >
+                      <p>{subUnit.title}</p>
                     </Depth2>
-                  )}
-
-                  {unit.showTabPanel && (
-                    <TabPanel>
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                        }}
-                      >
-                        <p style={{ color: "##9A9A9A" }}>
-                          *채팅 수업의 내용은 아래 '순번'에 따라 대화문 형태로
-                          제시됩니다.
-                        </p>
-                        <LessonButton>수업 저장하기</LessonButton>
-                      </div>
-                      <Table>
-                        <thead>
-                          <Tr>
-                            <Th>순서</Th>
-                            <Th>학습유형</Th>
-                            <Th>상세설명</Th>
-                            <Th>차시</Th>
-                          </Tr>
-                        </thead>
-                        <tbody>
-                          {unit.lessons.map((lesson, index) => (
-                            <Tr key={index}>
-                              <Td>{lesson.order}</Td>
-                              <Td>{lesson.type}</Td>
-                              <Td>{lesson.description}</Td>
-                              <Td>{lesson.class}</Td>
+                    {expandedSubUnits[subUnit.id] && (
+                      <TabPanel>
+                        <Flex>
+                          <p>
+                            *채팅 수업의 내용은 아래 '순번'에 따라 대화문 형태로
+                            제시됩니다.
+                          </p>
+                          <LessonButton>수업 저장하기</LessonButton>
+                        </Flex>
+                        <Table>
+                          <thead>
+                            <Tr>
+                              <Th>순번</Th>
+                              <Th>유형</Th>
+                              <Th>출제방식</Th>
+                              <Th>질문</Th>
+                              <Th>정답</Th>
                             </Tr>
-                          ))}
-                        </tbody>
-                      </Table>
-                    </TabPanel>
-                  )}
-                </div>
-              ))}
-            </>
-          )}
+                          </thead>
+                          <tbody>
+                            {subUnit.lessons.map((lesson, index) => (
+                              <Tr key={index}>
+                                <Td>{lesson.order}</Td>
+                                <Td>{lesson.type}</Td>
+                                <Td>{lesson.questionType}</Td>
+                                <Td>{lesson.description}</Td>
+                                <Td>{lesson.answer}</Td>
+                              </Tr>
+                            ))}
+                          </tbody>
+                        </Table>
+                      </TabPanel>
+                    )}
+                  </div>
+                ))}
+            </div>
+          ))}
         </TabContent>
       </TabContainer>
     </section>

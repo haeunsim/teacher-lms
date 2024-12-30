@@ -86,7 +86,7 @@ const LessonContentCreator = () => {
 
   return (
     <Container>
-      <section>
+      <section style={{ marginTop: "24px" }}>
         <h2 className="title2">수업 콘텐츠 생성</h2>
         <RadioList>
           <RadioCell>
@@ -148,7 +148,7 @@ const LessonContentCreator = () => {
               <input type="radio" name="subject" value="영어" /> 영어
             </label>
           </RadioCell>
-          <Dropdown label="대단원명" options={options}/>
+          <Dropdown label="대단원명" options={options} />
         </RadioList>
 
         <ContentWrap>
