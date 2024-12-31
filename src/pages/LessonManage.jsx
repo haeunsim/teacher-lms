@@ -68,8 +68,7 @@ const LessonManage = () => {
 
 const FlexContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: 50% 50%;
   width: 100%;
   height: 100%;
 `;

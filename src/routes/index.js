@@ -30,25 +30,6 @@ const LoadComponent = ({ component: Component }) => (
 );
 
 const AllRoutes = () => {
-  // const { layout } = useSelector(state) => ({
-  //   layout: state.Layout,
-  // }));
-
-  // const getLayout = () => {
-  //   let layoutCls = VerticalLayout;
-
-  //   switch (layout.layoutType) {
-  //     case layoutConstants.LAYOUT_FULL:
-  //       layoutCls = FullLayout;
-  //       break;
-  //     default:
-  //       layoutCls = VerticalLayout;
-  //       break;
-  //   }
-  //   return layoutCls;
-  // };
-
-  // let Layout = getLayout();
 
   return useRoutes([
     { path: "/", element: <Root /> },

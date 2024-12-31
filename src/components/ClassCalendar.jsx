@@ -79,6 +79,7 @@ const ClassCalendar = () => {
           <Calendar
             tileContent={tileContent}
             locale="ko-KR"
+            calendarType="gregory"
             view="month"
             minDetail="month"
             maxDetail="month"

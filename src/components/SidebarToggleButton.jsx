@@ -7,6 +7,7 @@ const HideButton = styled.button`
   position: fixed;
   top: 20px;
   left: ${({ isOpen }) => (isOpen ? "232px" : "10px")};
+  /* isOpen 10px 이 될 때 안에 요소 숨기기*/
   transition: left 0.3s ease-in-out;
   background: none;
   border: none;

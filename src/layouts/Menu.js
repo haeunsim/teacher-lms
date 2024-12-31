@@ -52,39 +52,24 @@ const MenuItemLink = ({ item, className }) => {
 const AppMenu = ({ menuItems }) => {
   let location = useLocation();
   const menuRef = useRef(null);
-  const isOpen = useSelector(state => state.sidebar.isOpen);
+  const isOpen = useSelector((state) => state.sidebar.isOpen);
   const [activeMenuItems, setActiveMenuItems] = useState([]);
-
-  const toggleMenu = (menuItem, show) => {
-    if (show)
-      setActiveMenuItems([
-        menuItem["key"],
-        ...findAllParent(menuItems, menuItem),
-      ]);
-  };
 
   const activeMenu = useCallback(() => {
     const div = document.getElementById("main-side-menu");
-    let matchingMenuItem = null;
+    if (!div) return;
 
-    if (div) {
-      let items = div.getElementsByClassName("side-nav-link-ref");
-      for (let i = 0; i < items.length; ++i) {
-        if (location.pathname === items[i].pathname) {
-          matchingMenuItem = items[i];
-          break;
-        }
-      }
+    const matchingMenuItem = Array.from(div.getElementsByClassName("side-nav-link-ref"))
+      .find(item => location.pathname === item.pathname);
 
-      if (matchingMenuItem) {
-        const mid = matchingMenuItem.getAttribute("data-menu-key");
-        const activeMt = findMenuItem(menuItems, mid);
-        if (activeMt) {
-          setActiveMenuItems([
-            activeMt["key"],
-            ...findAllParent(menuItems, activeMt),
-          ]);
-        }
+    if (matchingMenuItem) {
+      const mid = matchingMenuItem.getAttribute("data-menu-key");
+      const activeMt = findMenuItem(menuItems, mid);
+      if (activeMt) {
+        setActiveMenuItems([
+          activeMt.key,
+          ...findAllParent(menuItems, activeMt),
+        ]);
       }
     }
   }, [location.pathname, menuItems]);
@@ -95,24 +80,28 @@ const AppMenu = ({ menuItems }) => {
 
   return (
     <>
-      <SideNav className="side-nav" ref={menuRef} id="main-side-menu" isOpen={isOpen}>
+      <SidebarToggleButton />
+      <SideNav
+        className="side-nav"
+        ref={menuRef}
+        id="main-side-menu"
+        isOpen={isOpen}
+      >
         <div>
           <SidebarHeader>
             <p>AI튜터</p>
             <span>교사용 LMS</span>
-            <SidebarToggleButton />
           </SidebarHeader>
           {(menuItems || []).map((item, idx) => {
             return (
-              <div key={idx}>
-                <MenuItem
-                  item={item}
-                  linkClassName="side-nav-link"
-                  className={
-                    activeMenuItems.includes(item.key) ? "menuitem-active" : ""
-                  }
-                />
-              </div>
+              <MenuItem
+                key={idx}
+                item={item}
+                linkClassName="side-nav-link"
+                className={
+                  activeMenuItems.includes(item.key) ? "menuitem-active" : ""
+                }
+              />
             );
           })}
         </div>
@@ -134,7 +123,16 @@ const SideNav = styled.div`
   background: #f5f5f5;
   transition: width 0.3s ease-in-out;
   overflow: hidden;
+
+  > * {
+    opacity: ${(props) => (props.isOpen ? 1 : 0)};
+    visibility: ${(props) => (props.isOpen ? "visible" : "hidden")};
+    transition:
+      opacity 0.2s ease-in-out,
+      visibility 0.2s ease-in-out;
+  }
 `;
+
 const SidebarHeader = styled.div`
   position: relative;
   height: 98px;
@@ -161,16 +159,6 @@ const SidebarHeader = styled.div`
     height: 30px;
   }
 `;
-const HideButton = styled.button`
-  position: fixed;
-  top: 20px;
-  left: ${(props) => (props.isOpen ? "232px" : "10px")};
-  transition: left 0.3s ease-in-out;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 1000;
-`;
 
 const SidebarBottom = styled.ul`
   padding: 20px;
@@ -185,26 +173,37 @@ const SidebarBottom = styled.ul`
     }
   }
 `;
+
 const StyledMenuItem = styled.li`
   padding: 0;
   cursor: pointer;
 
-  &.side-nav-item {
-    .side-nav-link-ref {
-      padding: 12px 24px;
-      display: flex;
-      align-items: center;
-      color: #525252;
-      font-size: 18px;
-      font-weight: 600;
+  &.side-nav-item .side-nav-link-ref {
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    color: #525252;
+    font-size: 18px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
 
-      &:hover {
-        background: #eeeeee;
+    &:hover {
+      background: #eeeeee;
+    }
+  }
+
+  &.menuitem-active {
+    .side-sub-nav-link {
+      background: #2e90ff;
+
+      > span {
+        color: #fff;
       }
-
-      &.active {
-        background: #2e90ff;
-        color: white;
+    }
+    .side-nav-second-level a {
+      background: #88c0ff;
+      span {
+        color: #525252;
       }
     }
   }
@@ -225,6 +224,7 @@ const StyledMenuItem = styled.li`
     }
   }
 `;
+
 const StyledMenuLink = styled(Link)`
   text-decoration: none;
   width: 100%;
@@ -232,15 +232,12 @@ const StyledMenuLink = styled(Link)`
   align-items: center;
   transition: all 0.3s ease;
 
-  &:hover {
-    text-decoration: none;
-  }
-
   i {
     margin-right: 12px;
     font-size: 20px;
   }
 `;
+
 const IconWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -249,10 +246,6 @@ const IconWrapper = styled.div`
   svg {
     width: 24px;
     height: 24px;
-
-    .active & {
-      color: white;
-    }
   }
 `;
 

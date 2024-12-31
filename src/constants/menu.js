@@ -38,13 +38,13 @@ const MENU_ITEMS = [
     key: "manage",
     label: "학습 관리",
     url: "/manage",
-    icon: <ManageIcon/>,
+    icon: <ManageIcon />,
     children: [
       {
         key: "chat-history",
         label: "채팅 기록",
         url: "/manage/chat-history",
-        icon: <ChatIcon/>,
+        icon: <ChatIcon />,
       },
     ],
   },
@@ -52,7 +52,7 @@ const MENU_ITEMS = [
     key: "class",
     label: "학급 변동 관리",
     url: "/class",
-    icon: <ClassIcon/>,
+    icon: <ClassIcon />,
   },
   {
     key: "comingsoon",
