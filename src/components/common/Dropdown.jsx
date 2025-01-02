@@ -5,8 +5,8 @@ const DropdownContainer = styled.div`
   position: relative;
   width: 100%;
   border: 1px solid #adadad;
-  border-radius: 8px 8px 0 0 ;
-  padding: 8px 16px;
+  border-radius: 8px;
+  padding: 6px 14px;
   font-size: 20px;
 `;
 

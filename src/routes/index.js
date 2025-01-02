@@ -1,25 +1,20 @@
 import React, { Suspense } from "react";
 import { useRoutes } from "react-router-dom";
 import Root from "./Root";
-
-// All layouts/containers
-// import DefaultLayout from '../layouts/Default';
-// import VerticalLayout from '../layouts/Vertical';
-// import FullLayout from '../layouts/Full';
-
-// const Login = React.lazy(() => import('../pages/Login'));
-import LessonPrep from "../pages/LessonPrep.jsx";
-import LessonDB from "../pages/LessonDB.jsx";
-import LessonCustom from "../pages/LessonCustom.jsx";
-import LessonMonitor from "../pages/LessonMonitor.jsx";
-import LessonManage from "../pages/LessonManage.jsx";
-import ChatHistory from "../pages/ChatHistory.jsx";
-import ClassChange from "../pages/ClassChange.jsx";
-import Preparing from "../pages/Preparing.jsx";
-import Login from "../pages/Login.jsx";
-
 import PrivateRoute from "./privateRoute.js";
+import DefaultLayout from "../layouts/Default";
+import VerticalLayout from "../layouts/Vertical";
 import { useSelector } from "react-redux";
+
+const Login = React.lazy(() => import("../pages/Login.jsx"));
+const LessonPrep = React.lazy(() => import("../pages/LessonPrep.jsx"));
+const LessonDB = React.lazy(() => import("../pages/LessonDB.jsx"));
+const LessonCustom = React.lazy(() => import("../pages/LessonCustom.jsx"));
+const LessonMonitor = React.lazy(() => import("../pages/LessonMonitor.jsx"));
+const LessonManage = React.lazy(() => import("../pages/LessonManage.jsx"));
+const ChatHistory = React.lazy(() => import("../pages/ChatHistory.jsx"));
+const ClassChange = React.lazy(() => import("../pages/ClassChange.jsx"));
+const Preparing = React.lazy(() => import("../pages/Preparing.jsx"));
 
 const loading = () => <div className=""></div>;
 
@@ -35,21 +30,18 @@ const AllRoutes = () => {
     { path: "/", element: <Root /> },
     {
       path: "/",
-      // element: <DefaultLayout />,
+      element: <DefaultLayout />,
       children: [
         {
           path: "login",
           element: <LoadComponent component={Login} />,
         },
-        // {
-        //   path: "error-404",
-        //   element: <LoadComponent component={ErrorPageNotFound} />,
-        // },
       ],
     },
     {
       path: "/",
-      // element: <PrivateRoute roles={'Admin'} component={Layout} />,
+      element: <PrivateRoute component={VerticalLayout} />,
+      // PrivateRoute 는 로그인해야만 진입할 수 있는 페이지들, sidebar가 있는 레이아웃
       children: [
         {
           path: "lesson-prep",
@@ -68,8 +60,8 @@ const AllRoutes = () => {
             },
           ],
         },
-        { 
-          path: "monitor", 
+        {
+          path: "monitor",
           element: <LoadComponent component={LessonMonitor} />,
         },
         {
@@ -85,12 +77,12 @@ const AllRoutes = () => {
             },
           ],
         },
-        { 
-          path: "class", 
+        {
+          path: "class",
           element: <LoadComponent component={ClassChange} />,
         },
-        { 
-          path: "comingsoon", 
+        {
+          path: "comingsoon",
           element: <LoadComponent component={Preparing} />,
         },
       ],

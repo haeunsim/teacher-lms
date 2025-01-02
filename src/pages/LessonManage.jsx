@@ -71,6 +71,10 @@ const FlexContainer = styled.div`
   grid-template-columns: 50% 50%;
   width: 100%;
   height: 100%;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: 100%;
+  }
 `;
 const FlexItem = styled.div`
   border-bottom: 2px dashed #bababa;
@@ -85,6 +89,15 @@ const FlexItem = styled.div`
     border-bottom: none;
   }
 
+  @media (max-width: 1200px) {
+    border-left: none !important;
+    border-bottom: 2px dashed #bababa;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  
   h2 {
     text-align: center;
     color: #525252;

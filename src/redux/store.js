@@ -1,13 +1,13 @@
-import { createStore, combineReducers } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 import sidebarReducer from './reducers/sidebarReducer';
+import authReducer from './reducers/authReducer';
 
-const rootReducer = combineReducers({
-  sidebar: sidebarReducer
+const store = configureStore({
+  reducer: {
+    sidebar: sidebarReducer,
+    Auth: authReducer
+  },
+  devTools: process.env.NODE_ENV !== 'production'
 });
-
-const store = createStore(
-  rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
 
 export default store;

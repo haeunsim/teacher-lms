@@ -53,162 +53,165 @@ const ClassChange = () => {
 
   return (
     <>
-    {/* <ErrorModal/> */}
-    <Container>
-      <Flex>
-        <Item>
-          <div>
-            <h2 className="title2">전입/편출 학생 입력 양식</h2>
-
-            <Form onSubmit={handleSubmit}>
-              <FormGrid>
-                <FormRow>
-                  <Label>학교명</Label>
-                  <div>
-                    <Input
-                      type="text"
-                      name="schoolName"
-                      value={formData.schoolName}
-                      onChange={handleChange}
-                      className="sm"
-                    />
-                    <Suffix>초등학교</Suffix>
-                  </div>
-                </FormRow>
-
-                <FormRow>
-                  <Label>지역(시/도)</Label>
-                  <div>
-                  <Select
-                      name="region"
-                      value={formData.region}
-                      onChange={handleChange}
-                    >
-                      <option value="서울특별시">서울특별시</option>
-                      <option value="부산광역시">부산광역시</option>
-                      <option value="인천광역시">인천광역시</option>
-                      <option value="광주광역시">광주광역시</option>
-                      <option value="대전광역시">대전광역시</option>
-                      <option value="울산광역시">울산광역시</option>
-                      <option value="세종특별자치시">세종특별자치시</option>
-                      <option value="경기도">경기도</option>
-                      <option value="강원도">강원도</option>
-                      <option value="충청북도">충청북도</option>
-                      <option value="충청남도">충청남도</option>
-                      <option value="전라북도">전라북도</option>
-                      <option value="전라남도">전라남도</option>
-                      <option value="경상북도">경상북도</option>
-                      <option value="경상남도">경상남도</option>
-                      <option value="제주특별자치도">제주특별자치도</option>
-                    </Select>
-                  </div>
-                </FormRow>
-
-                <FormRow>
-                  <Label>교사명</Label>
-                  <div>
-                    <Input
-                      type="text"
-                      name="teacherName"
-                      value={formData.teacherName}
-                      onChange={handleChange}
-                    />
-                  </div>
-                </FormRow>
-
-                <FormRow>
-                  <Label>학급정보</Label>
-                  <div>
-                    <ShortInput
-                      type="number"
-                      name="grade"
-                      value={formData.grade}
-                      onChange={handleChange}
-                    />
-                    <Suffix>학년</Suffix>
-                    <ShortInput
-                      type="number"
-                      name="class"
-                      value={formData.class}
-                      onChange={handleChange}
-                    />
-                    <Suffix>반</Suffix>
-                  </div>
-                </FormRow>
-
-                <FormRow>
-                  <Label>신청사유</Label>
-                  <div>
-                    <RadioGroup>
-                      <RadioLabel>
-                        <input
-                          type="radio"
-                          name="studentType"
-                          value="전입생"
-                          checked={formData.studentType === "전입생"}
-                          onChange={handleChange}
-                        />
-                        전입생
-                      </RadioLabel>
-                      <RadioLabel>
-                        <input
-                          type="radio"
-                          name="studentType"
-                          value="전출생"
-                          checked={formData.studentType === "전출생"}
-                          onChange={handleChange}
-                        />
-                        전출생
-                      </RadioLabel>
-                    </RadioGroup>
-                  </div>
-                </FormRow>
-
-                <FormRow>
-                  <Label>학생명</Label>
-                  <div>
-                    <Input
-                      type="text"
-                      name="studentName"
-                      value={formData.studentName}
-                      onChange={handleChange}
-                    />
-                  </div>
-                </FormRow>
-
-                <FormRow>
-                  <Label>학생번호</Label>
-                  <div>
-                    <ShortInput
-                      type="number"
-                      name="transferCount"
-                      value={formData.transferCount}
-                      onChange={handleChange}
-                    />
-                    <Suffix>번</Suffix>
-                  </div>
-                </FormRow>
-              </FormGrid>
-
-              <ButtonWrapper>
-                <SubmitButton type="submit">제출하기</SubmitButton>
-              </ButtonWrapper>
-            </Form>
-          </div>
-        </Item>
-        <Item>
-          <div>
-            <h2 className="title2">
-              처리 현황 <span className="sm-point">(진행 단계 : 신청 - 접수 - 완료)</span>
-            </h2>
+      {/* <ErrorModal/> */}
+      <Container>
+        <Flex>
+          <Item>
             <div>
-              {/* 신청 내역이 없습니다. */}
-              <BasicTables headers={headers} data={data} />
+              <h2 className="title2">전입/편출 학생 입력 양식</h2>
+
+              <Form onSubmit={handleSubmit}>
+                <FormGrid>
+                  <FormRow>
+                    <Label>학교명</Label>
+                    <div>
+                      <Input
+                        type="text"
+                        name="schoolName"
+                        value={formData.schoolName}
+                        onChange={handleChange}
+                        className="sm"
+                      />
+                      <Suffix>초등학교</Suffix>
+                    </div>
+                  </FormRow>
+
+                  <FormRow>
+                    <Label>지역(시/도)</Label>
+                    <div>
+                      <Select
+                        name="region"
+                        value={formData.region}
+                        onChange={handleChange}
+                      >
+                        <option value="서울특별시">서울특별시</option>
+                        <option value="부산광역시">부산광역시</option>
+                        <option value="인천광역시">인천광역시</option>
+                        <option value="광주광역시">광주광역시</option>
+                        <option value="대전광역시">대전광역시</option>
+                        <option value="울산광역시">울산광역시</option>
+                        <option value="세종특별자치시">세종특별자치시</option>
+                        <option value="경기도">경기도</option>
+                        <option value="강원도">강원도</option>
+                        <option value="충청북도">충청북도</option>
+                        <option value="충청남도">충청남도</option>
+                        <option value="전라북도">전라북도</option>
+                        <option value="전라남도">전라남도</option>
+                        <option value="경상북도">경상북도</option>
+                        <option value="경상남도">경상남도</option>
+                        <option value="제주특별자치도">제주특별자치도</option>
+                      </Select>
+                    </div>
+                  </FormRow>
+
+                  <FormRow>
+                    <Label>교사명</Label>
+                    <div>
+                      <Input
+                        type="text"
+                        name="teacherName"
+                        value={formData.teacherName}
+                        onChange={handleChange}
+                      />
+                    </div>
+                  </FormRow>
+
+                  <FormRow>
+                    <Label>학급정보</Label>
+                    <div>
+                      <ShortInput
+                        type="number"
+                        name="grade"
+                        value={formData.grade}
+                        onChange={handleChange}
+                      />
+                      <Suffix>학년</Suffix>
+                      <ShortInput
+                        type="number"
+                        name="class"
+                        value={formData.class}
+                        onChange={handleChange}
+                      />
+                      <Suffix>반</Suffix>
+                    </div>
+                  </FormRow>
+
+                  <FormRow>
+                    <Label>신청사유</Label>
+                    <div>
+                      <RadioGroup>
+                        <RadioLabel>
+                          <input
+                            type="radio"
+                            name="studentType"
+                            value="전입생"
+                            checked={formData.studentType === "전입생"}
+                            onChange={handleChange}
+                          />
+                          전입생
+                        </RadioLabel>
+                        <RadioLabel>
+                          <input
+                            type="radio"
+                            name="studentType"
+                            value="전출생"
+                            checked={formData.studentType === "전출생"}
+                            onChange={handleChange}
+                          />
+                          전출생
+                        </RadioLabel>
+                      </RadioGroup>
+                    </div>
+                  </FormRow>
+
+                  <FormRow>
+                    <Label>학생명</Label>
+                    <div>
+                      <Input
+                        type="text"
+                        name="studentName"
+                        value={formData.studentName}
+                        onChange={handleChange}
+                      />
+                    </div>
+                  </FormRow>
+
+                  <FormRow>
+                    <Label>학생번호</Label>
+                    <div>
+                      <ShortInput
+                        type="number"
+                        name="transferCount"
+                        value={formData.transferCount}
+                        onChange={handleChange}
+                      />
+                      <Suffix>번</Suffix>
+                    </div>
+                  </FormRow>
+                </FormGrid>
+
+                <ButtonWrapper>
+                  <SubmitButton type="submit">제출하기</SubmitButton>
+                </ButtonWrapper>
+              </Form>
             </div>
-          </div>
-        </Item>
-      </Flex>
-    </Container>
+          </Item>
+          <Item>
+            <div>
+              <h2 className="title2">
+                처리 현황{" "}
+                <span className="sm-point">
+                  (진행 단계 : 신청 - 접수 - 완료)
+                </span>
+              </h2>
+              <div>
+                {/* 신청 내역이 없습니다. */}
+                <BasicTables headers={headers} data={data} />
+              </div>
+            </div>
+          </Item>
+        </Flex>
+      </Container>
     </>
   );
 };
@@ -221,11 +224,14 @@ const Container = styled.div`
 const Flex = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 1200px) {
+    flex-direction: column;
+  }
 `;
 
 const Item = styled.div`
   width: 50%;
-  height: 100vh;
 
   &:first-child {
     border-right: 2px dashed #bababa;
@@ -233,6 +239,14 @@ const Item = styled.div`
 
   > div {
     padding: 48px 24px;
+  }
+
+  @media screen and (max-width: 1200px) {
+    width: 100%;
+    
+    &:first-child {
+      border-right: none;
+    }
   }
 `;
 

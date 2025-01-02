@@ -9,6 +9,10 @@ const RadioList = styled.div`
   display: flex;
   gap: 12px;
   margin-bottom: 12px;
+
+  @media screen and (max-width: 1440px) {
+    flex-direction: column;
+  }
 `;
 
 const RadioCell = styled.div`
@@ -17,8 +21,9 @@ const RadioCell = styled.div`
   width: 100%;
   padding: 8px 32px;
   display: flex;
+  align-items: center;
   gap: 24px;
-  font-size: 18px;
+  font-size: 20px;
 
   & input[type="radio"] {
     appearance: none;
@@ -46,6 +51,10 @@ const RadioCell = styled.div`
       background: #2e90ff;
       border-radius: 50%;
     }
+  }
+
+  p, & label {
+    white-space: nowrap;
   }
 
   & label {
