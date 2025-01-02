@@ -1,30 +1,24 @@
 import React from "react";
-import LessonIcon from "../components/Icon/LessonIcon";
-import LessonDBIcon from "../components/Icon/LessonDBIcon";
-import LessonCustomIcon from "../components/Icon/LessonCustomIcon";
-import MonitorIcon from "../components/Icon/MonitorIcon";
-import ManageIcon from "../components/Icon/ManageIcon";
-import ClassIcon from "../components/Icon/ClassIcon";
-import ChatIcon from "../components/Icon/ChatIcon";
+import Icon from "../components/Icon/Icon";
 
 const MENU_ITEMS = [
   {
     key: "lesson-prep",
     label: "수업 준비",
     url: "/lesson-prep",
-    icon: <LessonIcon />,
+    icon: <Icon name="preview" color="#525252" />,
     children: [
       {
         key: "lesson-db",
         label: "수업 DB",
         url: "/lesson-prep/db",
-        icon: <LessonDBIcon />,
+        icon: <Icon name="database" color="#525252" />,
       },
       {
         key: "lesson-custom",
         label: "수업 생성",
         url: "/lesson-prep/custom",
-        icon: <LessonCustomIcon />,
+        icon: <Icon name="list" color="#525252" />,
       },
     ],
   },
@@ -32,19 +26,19 @@ const MENU_ITEMS = [
     key: "monitor",
     label: "수업 모니터링",
     url: "/monitor",
-    icon: <MonitorIcon />,
+    icon: <Icon name="moniter" color="#525252" />,
   },
   {
     key: "manage",
     label: "학습 관리",
     url: "/manage",
-    icon: <ManageIcon />,
+    icon: <Icon name="stack" color="#525252" />,
     children: [
       {
         key: "chat-history",
         label: "채팅 기록",
         url: "/manage/chat-history",
-        icon: <ChatIcon />,
+        icon: <Icon name="data" color="#525252" />,
       },
     ],
   },
@@ -52,7 +46,7 @@ const MENU_ITEMS = [
     key: "class",
     label: "학급 변동 관리",
     url: "/class",
-    icon: <ClassIcon />,
+    icon: <Icon name="change" color="#525252" />,
   },
   {
     key: "comingsoon",

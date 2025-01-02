@@ -3,6 +3,7 @@ import styled from "styled-components";
 import catImg from "../assets/images/cat2.png";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import Icon from "../components/Icon/Icon";
 
 const Login = () => {
   // 임시 로그인 기능 테스트

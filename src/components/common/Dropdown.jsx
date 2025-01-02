@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import Icon from "../Icon/Icon";
 
 const DropdownContainer = styled.div`
   position: relative;
@@ -75,21 +76,7 @@ const Dropdown = ({ label, options }) => {
         <span></span>
         { label ? <p>{label}</p> : <>selected</>}
         <span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            viewBox="0 0 32 32"
-            fill="none"
-          >
-            <path
-              d="M12 26L22 16L12 6"
-              stroke="#525252"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <Icon name="chevron-right" color="#525252"/>
         </span>
       </DropdownHeader>
 

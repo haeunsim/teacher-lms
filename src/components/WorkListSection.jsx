@@ -1,7 +1,7 @@
 import React from "react";
 import BasicTables from "./common/Table/BasicTable";
 import Navigator from "./common/Navigator";
-import IconBtn from "./IconBtn";
+import IconBtn from "./Icon/IconBtn";
 
 const headers = [
   { label: "순번", width: "7%" },
@@ -9,9 +9,9 @@ const headers = [
   { label: "학년", width: "7%" },
   { label: "대단원", width: "16%" },
   { label: "중단원", width: "42%" },
-  { label: "테스트", width: "7%", cell: () => <IconBtn /> },
-  { label: "음소거", width: "7%", cell: () => <IconBtn /> },
-  { label: "링크", width: "7%", cell: () => <IconBtn /> },
+  { label: "테스트", width: "7%", cell: () => <IconBtn name="chat" color="#2E90FF" /> },
+  { label: "음소거", width: "7%", cell: () => <IconBtn name="check" /> },
+  { label: "링크", width: "7%", cell: () => <IconBtn name="send" color="#2E90FF" /> },
 ];
 
 const data = [
@@ -70,7 +70,8 @@ const data = [
 const WorkListSection = () => {
   return (
     <section>
-      <h2 className="title3">작업물 열람</h2>
+      <h2 className="title3">작업물 열람
+      </h2>
       <BasicTables headers={headers} data={data} />
       <Navigator />
     </section>
