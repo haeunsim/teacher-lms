@@ -1,10 +1,16 @@
 import React from "react";
-import StudentStatus from "../layouts/StudentStatus";
 import BlockCalendar from "../components/BlockCalendar";
 import ClassCalendar from "../components/ClassCalendar";
 import LineGraph from "../components/LineGraph";
 import styled from "styled-components";
 
+const Title = styled.h4`
+  font-size: 28px;
+  color: #525252;
+  font-weight: 500;
+  text-align: center;
+  padding-bottom: 16px;
+`
 const LessonManage = () => {
   let value = 48;
 
@@ -12,16 +18,19 @@ const LessonManage = () => {
     <>
       <FlexContainer>
         <FlexItem>
+          <Title>실시현황</Title>
           <BlockCalendar />
         </FlexItem>
         <FlexItem>
+          <Title>수업 캘린더</Title>
           <ClassCalendar />
         </FlexItem>
         <FlexItem>
+          <Title>수업 분석</Title>
           <LineGraph />
         </FlexItem>
         <FlexItem>
-          <h2>학생 체감 난이도</h2>
+          <Title>학생 체감 난이도</Title>
           <Card>
             <div style={{ position: "relative", width: "100%" }}>
               <ProgressText>{value}/100</ProgressText>
@@ -42,7 +51,7 @@ const LessonManage = () => {
             </div>
           </Card>
 
-          <h2>난이도 - 정답률</h2>
+          <Title>난이도 - 정답률</Title>
           <Card>
             <BarItem>
               <BarLabel>쉬움</BarLabel>

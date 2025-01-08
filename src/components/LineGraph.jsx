@@ -101,7 +101,6 @@ const LineGraph = () => {
 
   return (
     <>
-      <h2>수업 분석</h2>
       <Container>
         <Dropdown label="과목 전체" options={options} />
         <canvas ref={chartRef}></canvas>

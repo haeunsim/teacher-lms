@@ -190,7 +190,7 @@ const ChatSection = () => {
 
   return (
     <section>
-      <h2 className="title3">사전 테스트</h2>
+      <h2>사전 테스트</h2>
       <ChatContainer>
         <ContentsArea>
           <LessonHeader>

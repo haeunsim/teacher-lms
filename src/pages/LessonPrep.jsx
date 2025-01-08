@@ -16,9 +16,12 @@ const Flex = styled.div`
 
 const LeftWrap = styled.div`
   width: 70%;
-  padding: 20px 32px 20px ${props => props.sidebarOpen ? '32px' : '60px'};
+  padding: 35px 32px 35px ${props => props.sidebarOpen ? '32px' : '60px'};
   transition: padding 0.3s ease-in-out;
-
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
   @media screen and (max-width: 1200px) {
     width: 100%;
   }

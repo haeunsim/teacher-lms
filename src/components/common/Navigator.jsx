@@ -35,7 +35,6 @@ const Nav = styled.nav`
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin: 20px 0;
 `;
 const NavButton = styled.button`
   border: none;

@@ -12,12 +12,12 @@ const Center = styled.div`
   justify-content: center;
 `;
 
-const Title = styled.h4`
+const Title = styled.h1`
   color: #2e90ff;
   text-align: center;
   font-size: 48px;
   font-weight: 600;
-  line-height: 1.5;
+  margin: 0;
 `;
 
 const Text = styled.div`
@@ -25,15 +25,17 @@ const Text = styled.div`
   font-weight: 600;
   line-height: 1.6;
   h6 {
-    font-size: 24px;
+    font-size: 22px;
     color: #2e90ff;
+    margin-bottom: 10px;
   }
   p {
     color: #292929;
-    font-size: 22px;
+    font-size: 20px;
   }
   span {
     color: #15cbf3;
+    font-size: 20px;
   }
 `;
 

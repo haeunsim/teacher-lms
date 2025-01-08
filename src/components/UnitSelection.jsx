@@ -3,11 +3,9 @@ import styled from "styled-components";
 import SearchInput from "../components/common/SearchInput";
 import { unitData } from "./unitData";
 
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 32px 42px 20px;
+const Head = styled.div`
+  width: 100%;
+  padding: 35px 47px 35px;
 `;
 const TabContainer = styled.div``;
 
@@ -55,7 +53,7 @@ const Flex = styled.div`
   justify-content: space-between;
   align-items: center;
   color: #9a9a9a;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
 `;
 
@@ -66,7 +64,7 @@ const Depth1 = styled.div`
   padding: 16px;
 
   p {
-    font-size: 20px;
+    font-size: 18px;
     color: #333;
     font-weight: 500;
   }
@@ -78,7 +76,7 @@ const Depth2 = styled.p`
   border-radius: 10px 10px 0 0;
 
   p {
-    font-size: 20px;
+    font-size: 18px;
     color: #333;
     font-weight: 500;
   }
@@ -140,12 +138,8 @@ const Th = styled.th`
 const LessonButton = styled.button`
   background-color: #2e90ff;
   color: white;
-  padding: 10px;
-  width: 200px;
+  padding: 10px 30px;
   border-radius: 8px;
-  cursor: pointer;
-  font-size: 18px;
-  font-family: "Pretendard";
 `;
 
 const UnitSelection = () => {
@@ -194,10 +188,12 @@ const UnitSelection = () => {
 
   return (
     <section>
-      <Header>
-        <h2 className="title2">수업 콘텐츠 구성 미리보기</h2>
-        <SearchInput />
-      </Header>
+      <Head>
+        <Flex>
+          <h2>수업 콘텐츠 구성 미리보기</h2>
+          <SearchInput />
+        </Flex>
+      </Head>
 
       <TabContainer>
         <TabMenu>

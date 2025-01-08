@@ -4,8 +4,8 @@ import styled from 'styled-components';
 
 const IconWrap = styled.div`
   display: flex;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -13,6 +13,11 @@ const IconWrap = styled.div`
   box-sizing: border-box;
   border: 1px solid var(--Gray-Scale-Gray-500, #adadad);
   background: var(--Gray-Scale-White, #fff);
+
+  > svg {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const IconBtn = ({ name, color = "#2E90FF" }) => {

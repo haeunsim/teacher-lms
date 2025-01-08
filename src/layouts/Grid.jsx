@@ -61,22 +61,24 @@ const Info = styled.div`
 
   p {
     color: #9a9a9a;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
   }
 `;
 
 const Button = styled.button`
   display: flex;
-  width: 158px;
-  padding: 8px 0px;
+  padding: 8px 16px;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 2px;
   background: #88c0ff;
   color: #fff;
   border-radius: 8px;
-  font-size: 20px;
+  font-size: 17px;
+  font-weight: 600;
+
+
 `;
 
 const ToggleButton = styled.button`
@@ -98,16 +100,16 @@ const Content = styled.div`
 
 const List = styled.div`
   width: 100%;
-  max-width: 428px;
+  max-width: 400px;
   background: rgba(196, 224, 255, 0.25);
-  padding: 36px 42px;
+  padding: 35px 20px;
 
   h4 {
     text-align: center;
-    padding: 40px 0 20px;
+    padding: 40px 0 30px;
     color: #525252;
     font-size: 22px;
-    font-weight: 500;
+    font-weight: 600;
   }
 `;
 
@@ -123,7 +125,7 @@ const StudentCard = styled.div`
   border-radius: 8px;
   text-align: center;
   color: #9a9a9a;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
 `;
 
@@ -134,11 +136,11 @@ const Grid = () => {
     <Flex>
       <Content isListVisible={isListVisible}>
         <Head>
-          <h4 className="title3">채팅 수업 참여 현황</h4>
+          <h4 className="title">채팅 수업 참여 현황</h4>
           <Info>
             <p>*현재 학급참여 인원 : 총 00명</p>
             <Button>
-              <Icon name="refresh" color="#fff" />
+              <Icon name="refresh" color="#fff" size={26} />
               새로고침
             </Button>
           </Info>
@@ -159,15 +161,21 @@ const Grid = () => {
           <h4>'수업 시작' 학생 명단</h4>
           <ListGrid>
             <StudentCard>1. 이학생</StudentCard>
-            <StudentCard>1. 이학생</StudentCard>
-            <StudentCard>1. 이학생</StudentCard>
-            <StudentCard>1. 이학생</StudentCard>
-            <StudentCard>1. 이학생</StudentCard>
-            <StudentCard>1. 이학생</StudentCard>
-            <StudentCard>1. 이학생</StudentCard>
-            <StudentCard>1. 이학생</StudentCard>
-            <StudentCard>1. 이학생</StudentCard>
-            <StudentCard>1. 이학생</StudentCard>
+            <StudentCard>2. 이학생</StudentCard>
+            <StudentCard>3. 이학생</StudentCard>
+            <StudentCard>4. 이학생</StudentCard>
+            <StudentCard>5. 이학생</StudentCard>
+            <StudentCard>6. 이학생</StudentCard>
+            <StudentCard>7. 이학생</StudentCard>
+            <StudentCard>8. 이학생</StudentCard>
+            <StudentCard>9. 이학생</StudentCard>
+            <StudentCard>10. 이학생</StudentCard>
+            <StudentCard>11. 이학생</StudentCard>
+            <StudentCard>12. 이학생</StudentCard>
+            <StudentCard>13. 이학생</StudentCard>
+            <StudentCard>14. 이학생</StudentCard>
+            <StudentCard>15. 이학생</StudentCard>
+            <StudentCard>16. 이학생</StudentCard>
           </ListGrid>
         </List>
       )}

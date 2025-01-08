@@ -8,7 +8,6 @@ const RadioList = styled.div`
   max-width: 1200px;
   display: flex;
   gap: 12px;
-  margin-bottom: 12px;
 
   @media screen and (max-width: 1440px) {
     flex-direction: column;
@@ -23,12 +22,12 @@ const RadioCell = styled.div`
   display: flex;
   align-items: center;
   gap: 24px;
-  font-size: 20px;
+  font-size: 16px;
 
   & input[type="radio"] {
     appearance: none;
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     border: 2px solid #9a9a9a;
     border-radius: 50%;
     margin: 0;
@@ -46,8 +45,8 @@ const RadioCell = styled.div`
     &::before {
       content: "";
       position: absolute;
-      width: 12px;
-      height: 12px;
+      width: 8px;
+      height: 8px;
       background: #2e90ff;
       border-radius: 50%;
     }
@@ -82,6 +81,7 @@ const Table = styled.table`
     border: 1px solid #ddd;
     padding: 12px;
     text-align: center;
+    font-size: 16px;
   }
 `;
 
@@ -95,8 +95,8 @@ const LessonContentCreator = () => {
 
   return (
     <Container>
-      <section style={{ marginTop: "24px" }}>
-        <h2 className="title2">수업 콘텐츠 생성</h2>
+      <section>
+        <h2>수업 콘텐츠 생성</h2>
         <RadioList>
           <RadioCell>
             <p>출판사</p>

@@ -164,7 +164,7 @@ const SidebarBottom = styled.ul`
   padding: 20px;
 
   li {
-    font-size: 20px;
+    font-size: 16px;
     color: #525252;
     line-height: 1.5;
 
@@ -187,6 +187,10 @@ const StyledMenuItem = styled.li`
     font-weight: 600;
     transition: background-color 0.3s ease;
 
+    span {
+      font-size: 16px;
+    }
+    
     &:hover {
       background: #eeeeee;
     }

@@ -14,14 +14,16 @@ const CalendarContainer = styled.div`
   justify-content: center;
   align-items: center;
   
-  h3 {
+  h5 {
     font-weight: 400;
     padding-bottom: 16px;
     color: #525252;
+    font-size: 18px;
 
     span {
       font-weight: 600;
       color: #292929;
+      font-size: 18px;
     }
   }
   .react-calendar {
@@ -194,12 +196,11 @@ const BlockCalendar = () => {
 
   return (
     <>
-      <h2>실시현황</h2>
       <CalendarContainer>
         <div>
-          <h3>
+          <h5>
             <span>12월 현재</span>까지 <span>총 12회</span> 수업을 진행했어요
-          </h3>
+          </h5>
 
           <Flex>
             <Calendar

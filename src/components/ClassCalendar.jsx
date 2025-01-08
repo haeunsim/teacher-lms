@@ -73,7 +73,6 @@ const ClassCalendar = () => {
 
   return (
     <>
-      <h2>수업 캘린더</h2>
       <CalendarContainer>
         <div>
           <Calendar

@@ -20,11 +20,12 @@ const Th = styled.th`
   background: #c4e0ff;
   padding: 12px 8px;
   text-align: center;
-  font-weight: 500;
+  font-weight: 600;
   border-right: 1px solid #d2d2d2;
   border-top: none;
-  font-size: 20px;
-
+  font-size: 17px;
+  white-space: nowrap;
+  
   &:nth-child(1) {
     border-left: 1px solid #d2d2d2;
   }
@@ -36,7 +37,7 @@ const Td = styled.td`
   border-bottom: 1px solid #d2d2d2;
   border-right: 1px solid #d2d2d2;
   text-align: center;
-  font-size: 18px;
+  font-size: 16px;
 
   &:nth-child(1) {
     border-left: 1px solid #d2d2d2;

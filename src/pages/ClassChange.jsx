@@ -57,8 +57,8 @@ const ClassChange = () => {
       <Container>
         <Flex>
           <Item>
-            <div>
-              <h2 className="title2">전입/편출 학생 입력 양식</h2>
+            <section>
+              <h2>전입/편출 학생 입력 양식</h2>
 
               <Form onSubmit={handleSubmit}>
                 <FormGrid>
@@ -194,11 +194,11 @@ const ClassChange = () => {
                   <SubmitButton type="submit">제출하기</SubmitButton>
                 </ButtonWrapper>
               </Form>
-            </div>
+            </section>
           </Item>
           <Item>
-            <div>
-              <h2 className="title2">
+            <section>
+              <h2>
                 처리 현황{" "}
                 <span className="sm-point">
                   (진행 단계 : 신청 - 접수 - 완료)
@@ -208,7 +208,7 @@ const ClassChange = () => {
                 {/* 신청 내역이 없습니다. */}
                 <BasicTables headers={headers} data={data} />
               </div>
-            </div>
+            </section>
           </Item>
         </Flex>
       </Container>
@@ -224,6 +224,7 @@ const Container = styled.div`
 const Flex = styled.div`
   display: flex;
   justify-content: space-between;
+  min-height: 100vh;
 
   @media screen and (max-width: 1200px) {
     flex-direction: column;
@@ -237,7 +238,7 @@ const Item = styled.div`
     border-right: 2px dashed #bababa;
   }
 
-  > div {
+  > section {
     padding: 48px 24px;
   }
 
@@ -275,7 +276,7 @@ const FormRow = styled.div`
 
 const Label = styled.label`
   min-width: 150px;
-  padding: 35px 0;
+  padding: 30px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -283,7 +284,7 @@ const Label = styled.label`
   text-align: center;
   color: #525252;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 16px;
 `;
 
 const Input = styled.input`
@@ -292,7 +293,7 @@ const Input = styled.input`
   border-radius: 4px;
   width: 220px;
   background: #f5f5f5;
-  font-size: 20px;
+  font-size: 16px;
   color: #2e90ff;
   font-weight: 500;
   text-align: center;
@@ -316,7 +317,7 @@ const Select = styled.select`
   background: #f5f5f5;
   text-align: center;
   color: #525252;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
 
   &::active {
@@ -330,7 +331,7 @@ const Select = styled.select`
 const Suffix = styled.span`
   margin: 0 4px;
   color: #525252;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
 `;
 
@@ -346,7 +347,7 @@ const RadioLabel = styled.label`
   align-items: center;
   gap: 4px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 16px;
   color: #525252;
   font-weight: 500;
 `;
@@ -362,7 +363,8 @@ const SubmitButton = styled.button`
   color: #9a9a9a;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: 600;
   line-height: 1;
   width: 220px;
 `;

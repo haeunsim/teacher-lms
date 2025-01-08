@@ -5,25 +5,8 @@ const SidebarContainer = styled.div`
   max-width: 480px;
   width: 100%;
   background: var(--main-light-30025, rgba(196, 224, 255, 0.25));
-  padding: 24px;
-
-  h4 {
-    text-align: center;
-    font-size: 26px;
-    font-weight: 500;
-    color: #292929;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 22px;
-
-    span {
-      font-size: 20px;
-      font-weight: 600;
-      color: #525252;
-    }
-  }
+  padding: 40px 24px;
+  text-align: center;
 `;
 
 const RadioList = styled.div`
@@ -76,19 +59,19 @@ const RadioCell = styled.div`
 `;
 
 const SubjectList = styled.div`
-  margin-top: 24px;
   border: 1px solid #88c0ff;
   border-radius: 8px;
-  background: var(--main-light-30025, rgba(196, 224, 255, 0.25));
+  background: rgba(196, 224, 255, 0.25);
 `;
 
 const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
+
   th {
-    padding: 12px;
+    padding: 10px;
     border-bottom: 1px solid #88c0ff;
-    font-size: 18px;
+    font-size: 16px;
     color: #525252;
   }
 
@@ -98,7 +81,7 @@ const Table = styled.table`
       text-align: left;
       border-bottom: 1px solid #88c0ff;
       color: #292929;
-      font-size: 18px;
+      font-size: 16px;
 
       &:nth-child(1) {
         color: #525252;
@@ -119,7 +102,7 @@ const Table = styled.table`
 const TextButton = styled.div`
   display: flex;
   width: 248px;
-  margin: 12px auto;
+  margin: 0 auto;
   padding: 9px 12px;
   justify-content: center;
   align-items: center;
@@ -140,122 +123,125 @@ const Flex = styled.div`
     align-items: center;
     cursor: pointer;
     gap: 8px;
+    font-size: 16px;
   }
 `;
 
 const RightSidebar = () => {
   return (
     <SidebarContainer>
-      <h4>
-        과목별 단원 구성 <span>(‘교사용 지도서’ 기준)</span>
-      </h4>
+      <section>
+        <h4>
+          과목별 단원 구성 <span>(‘교사용 지도서’ 기준)</span>
+        </h4>
 
-      <RadioList>
-        <RadioCell>
-          <p>출판사</p>
-          <Flex>
-            <label>
-              <input type="radio" name="publisher" value="천재" /> 천재
-            </label>
-            <label>
-              <input type="radio" name="publisher" value="비상" /> 비상
-            </label>
-            <label>
-              <input type="radio" name="publisher" value="미래엔" /> 미래엔
-            </label>
-          </Flex>
-        </RadioCell>
+        <RadioList>
+          <RadioCell>
+            <p>출판사</p>
+            <Flex>
+              <label>
+                <input type="radio" name="publisher" value="천재" /> 천재
+              </label>
+              <label>
+                <input type="radio" name="publisher" value="비상" /> 비상
+              </label>
+              <label>
+                <input type="radio" name="publisher" value="미래엔" /> 미래엔
+              </label>
+            </Flex>
+          </RadioCell>
 
-        <RadioCell>
-          <p>학년</p>
-          <Flex>
-            <label>
-              <input type="radio" name="grade" value="3" /> 3학년
-            </label>
-            <label>
-              <input type="radio" name="grade" value="4" /> 4학년
-            </label>
-          </Flex>
-        </RadioCell>
+          <RadioCell>
+            <p>학년</p>
+            <Flex>
+              <label>
+                <input type="radio" name="grade" value="3" /> 3학년
+              </label>
+              <label>
+                <input type="radio" name="grade" value="4" /> 4학년
+              </label>
+            </Flex>
+          </RadioCell>
 
-        <RadioCell>
-          <p>학기</p>
-          <Flex>
-            <label>
-              <input type="radio" name="semester" value="1" /> 1학기
-            </label>
-            <label>
-              <input type="radio" name="semester" value="2" /> 2학기
-            </label>
-          </Flex>
-        </RadioCell>
+          <RadioCell>
+            <p>학기</p>
+            <Flex>
+              <label>
+                <input type="radio" name="semester" value="1" /> 1학기
+              </label>
+              <label>
+                <input type="radio" name="semester" value="2" /> 2학기
+              </label>
+            </Flex>
+          </RadioCell>
 
-        <RadioCell>
-          <p>과목</p>
-          <Flex>
-            <label>
-              <input type="radio" name="subject" value="국어" /> 국어
-            </label>
-            <label>
-              <input type="radio" name="subject" value="사회" /> 사회
-            </label>
-            <label>
-              <input type="radio" name="subject" value="과학" /> 과학
-            </label>
-          </Flex>
-        </RadioCell>
-      </RadioList>
+          <RadioCell>
+            <p>과목</p>
+            <Flex>
+              <label>
+                <input type="radio" name="subject" value="국어" /> 국어
+              </label>
+              <label>
+                <input type="radio" name="subject" value="사회" /> 사회
+              </label>
+              <label>
+                <input type="radio" name="subject" value="과학" /> 과학
+              </label>
+            </Flex>
+          </RadioCell>
+        </RadioList>
 
-      <TextButton>검색</TextButton>
+        <TextButton>검색</TextButton>
 
-      <SubjectList>
-        <Table>
-          <thead>
-            <tr>
-              <th style={{ width: "32%" }}>대단원</th>
-              <th style={{ width: "53%" }}>중단원</th>
-              <th style={{ width: "15%" }}>차시</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1. 힘과 우리 생활</td>
-              <td>물체를 움직여 볼까요?</td>
-              <td>1/10</td>
-            </tr>
-            <tr>
-              <td>1. 힘과 우리 생활</td>
-              <td>무게가 다른 물체를 밀고 당겨 볼까요?</td>
-              <td>2/10</td>
-            </tr>
-            <tr>
-              <td>1. 힘과 우리 생활</td>
-              <td>수평을 잡아요</td>
-              <td>3/10</td>
-            </tr>
-            <tr>
-              <td>1. 힘과 우리 생활</td>
-              <td>수평 잡기로 물체의 무게를 비교해 볼까요?</td>
-              <td>4/10</td>
-            </tr>
-            <tr>
-              <td>1. 힘과 우리 생활</td>
-              <td>무게를 정확히 비교해볼까요?</td>
-              <td>5/10</td>
-            </tr>
-            <tr>
-              <td>1. 힘과 우리 생활</td>
-              <td>용수철 저울로 무게를 비교해요</td>
-              <td>6/10</td>
-            </tr>
-            <tr>
-              <td>1. 힘과 우리 생활</td>
-              <td>지레를 이용해요</td>
-              <td>7/10</td>
-            </tr>
-          </tbody>
-        </Table>
-      </SubjectList>
+        <SubjectList>
+          <Table>
+            <thead>
+              <tr>
+                <th style={{ width: "32%" }}>대단원</th>
+                <th style={{ width: "53%" }}>중단원</th>
+                <th style={{ width: "15%" }}>차시</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1. 힘과 우리 생활</td>
+                <td>물체를 움직여 볼까요?</td>
+                <td>1/10</td>
+              </tr>
+              <tr>
+                <td>1. 힘과 우리 생활</td>
+                <td>무게가 다른 물체를 밀고 당겨 볼까요?</td>
+                <td>2/10</td>
+              </tr>
+              <tr>
+                <td>1. 힘과 우리 생활</td>
+                <td>수평을 잡아요</td>
+                <td>3/10</td>
+              </tr>
+              <tr>
+                <td>1. 힘과 우리 생활</td>
+                <td>수평 잡기로 물체의 무게를 비교해 볼까요?</td>
+                <td>4/10</td>
+              </tr>
+              <tr>
+                <td>1. 힘과 우리 생활</td>
+                <td>무게를 정확히 비교해볼까요?</td>
+                <td>5/10</td>
+              </tr>
+              <tr>
+                <td>1. 힘과 우리 생활</td>
+                <td>용수철 저울로 무게를 비교해요</td>
+                <td>6/10</td>
+              </tr>
+              <tr>
+                <td>1. 힘과 우리 생활</td>
+                <td>지레를 이용해요</td>
+                <td>7/10</td>
+              </tr>
+            </tbody>
+          </Table>
+        </SubjectList>
+      </section>
     </SidebarContainer>
   );
 };

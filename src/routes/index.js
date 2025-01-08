@@ -13,6 +13,7 @@ const LessonCustom = React.lazy(() => import("../pages/LessonCustom.jsx"));
 const LessonMonitor = React.lazy(() => import("../pages/LessonMonitor.jsx"));
 const LessonManage = React.lazy(() => import("../pages/LessonManage.jsx"));
 const ChatHistory = React.lazy(() => import("../pages/ChatHistory.jsx"));
+const StudentChatHistory = React.lazy(() => import("../pages/StudentChatHistory.jsx"));
 const ClassChange = React.lazy(() => import("../pages/ClassChange.jsx"));
 const Preparing = React.lazy(() => import("../pages/Preparing.jsx"));
 
@@ -74,6 +75,11 @@ const AllRoutes = () => {
             {
               path: "chat-history",
               element: <LoadComponent component={ChatHistory} />,
+            },
+            // 학생 채팅 기록 열람
+            {
+              path: "student-chat-history",
+              element: <LoadComponent component={StudentChatHistory} />,
             },
           ],
         },
