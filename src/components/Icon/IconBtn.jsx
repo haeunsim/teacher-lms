@@ -2,21 +2,22 @@ import React from 'react';
 import Icon from './Icon';
 import styled from 'styled-components';
 
-const IconWrap = styled.div`
-  display: flex;
+const IconWrap = styled.button`
   width: 28px;
   height: 28px;
+  display: flex;
   justify-content: center;
   align-items: center;
-  flex-shrink: 0;
   border-radius: 4px;
-  box-sizing: border-box;
-  border: 1px solid var(--Gray-Scale-Gray-500, #adadad);
-  background: var(--Gray-Scale-White, #fff);
+  border: 1px solid #c0c0c0;
+  background: #fff;
 
   > svg {
-    width: 100%;
-    height: 100%;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+    width: 23px;
+    height: 23px;
   }
 `;
 

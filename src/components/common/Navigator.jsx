@@ -1,11 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 
-const Navigator = ({ currentPage = 1, totalPages = 4, onPageChange }) => {
+const Navigator = ({ currentPage, setCurrentPage, totalItems, itemsPerPage }) => {
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+  const handlePageChange = (newPage) => {
+    if (newPage >= 1 && newPage <= totalPages) {
+      setCurrentPage(newPage);
+    }
+  };
+
   return (
     <Nav>
       <NavButton
-        onClick={() => onPageChange(currentPage - 1)}
+        onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
         &lt;
@@ -15,13 +23,13 @@ const Navigator = ({ currentPage = 1, totalPages = 4, onPageChange }) => {
         <PageNumber
           key={index + 1}
           active={currentPage === index + 1}
-          onClick={() => onPageChange(index + 1)}
+          onClick={() => handlePageChange(index + 1)}
         >
           {index + 1}
         </PageNumber>
       ))}
       <NavButton
-        onClick={() => onPageChange(currentPage + 1)}
+        onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
       >
         &gt;
