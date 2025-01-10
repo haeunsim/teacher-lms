@@ -5,7 +5,7 @@ import { getMenuItems } from "../helpers/menu";
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   return (
     <>
-      <AppMenu menuItems={getMenuItems()} isOpen={isOpen} toggleSidebar={toggleSidebar} />
+      <AppMenu menuItems={getMenuItems()} $isOpen={isOpen} toggleSidebar={toggleSidebar} />
     </>
   );
 };

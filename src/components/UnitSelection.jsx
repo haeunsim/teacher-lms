@@ -34,7 +34,7 @@ const TabItem = styled.li`
 `;
 
 const TabContent = styled.div`
-  background: var(--main-light-30025, rgba(196, 224, 255, 0.25));
+  background: rgba(196, 224, 255, 0.25);
   padding: 30px 42px;
   display: flex;
   flex-direction: column;
@@ -57,6 +57,11 @@ const Flex = styled.div`
   font-weight: 500;
 `;
 
+const UnitWrap = styled.div`
+  border: 1px solid #88c0ff;
+  border-radius: 12px;
+`;
+
 const Depth1 = styled.div`
   background: #fff;
   cursor: pointer;
@@ -70,17 +75,28 @@ const Depth1 = styled.div`
   }
 `;
 
-const Depth2 = styled.p`
+const SubUnitWrap = styled.div`
+  border-bottom: 1px solid #88c0ff;
+  &:last-child {
+    border-bottom: none;
+  }
+`;
+
+const Depth2 = styled.button`
   position: relative;
   padding: 15px 8px 15px 40px;
   border-radius: 10px 10px 0 0;
+  background: transparent;
+  width: 100%;
+  text-align: left;
 
   p {
-    font-size: 18px;
+    font-size: 16px;
     color: #333;
     font-weight: 500;
   }
 
+  /* 기본 -> 열렸을 때 rotate */
   ::before {
     content: "";
     position: absolute;
@@ -91,6 +107,10 @@ const Depth2 = styled.p`
     height: 10px;
     border-top: 1px solid #525252;
     border-right: 1px solid #525252;
+  }
+
+  &[aria-expanded="true"]::before {
+    transform: translateY(-50%) rotate(135deg);
   }
 `;
 
@@ -216,29 +236,27 @@ const UnitSelection = () => {
 
         <TabContent>
           {currentUnits.map((unit) => (
-            <div key={unit.id}>
+            <UnitWrap key={unit.id}>
               <Depth1
                 onClick={() => toggleUnitTitle(unit.id)}
                 style={{
-                  background: expandedUnits[unit.id]
-                    ? "rgba(196, 224, 255, 0.25)"
-                    : "#fff",
+                  background: expandedUnits[unit.id] ? "#7cb9ff" : "#fff",
+                  borderRadius: expandedUnits[unit.id]
+                    ? "12px 12px 0 0"
+                    : "12px",
                 }}
               >
-                <p>{unit.mainTitle}</p>
+                <p style={{ color: expandedUnits[unit.id] ? "#fff" : "#333" }}>
+                  {unit.mainTitle}
+                </p>
+                {/* on off 아이콘 필요 */}
               </Depth1>
 
               {expandedUnits[unit.id] &&
                 unit.subUnits.map((subUnit) => (
-                  <div key={subUnit.id} style={{ marginLeft: "30px" }}>
-                    <Depth2
-                      onClick={() => toggleSubUnit(subUnit.id)}
-                      style={{
-                        background: expandedSubUnits[subUnit.id]
-                          ? "#C4E0FF"
-                          : "transparent",
-                      }}
-                    >
+                  <SubUnitWrap key={subUnit.id}>
+                    <Depth2 onClick={() => toggleSubUnit(subUnit.id)} aria-expanded={expandedSubUnits[subUnit.id]}>
+                      {/* on off 아이콘 필요 */}
                       <p>{subUnit.title}</p>
                     </Depth2>
                     {expandedSubUnits[subUnit.id] && (
@@ -274,9 +292,9 @@ const UnitSelection = () => {
                         </Table>
                       </TabPanel>
                     )}
-                  </div>
+                  </SubUnitWrap>
                 ))}
-            </div>
+            </UnitWrap>
           ))}
         </TabContent>
       </TabContainer>

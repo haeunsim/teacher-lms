@@ -7,7 +7,7 @@ import Icon from "./Icon/Icon";
 const HideButton = styled.button`
   position: fixed;
   top: 20px;
-  left: ${({ isOpen }) => (isOpen ? "232px" : "10px")};
+  left: ${({ $isOpen }) => ($isOpen ? "232px" : "10px")};
   /* isOpen 10px 이 될 때 안에 요소 숨기기 */
   transition: left 0.3s ease-in-out;
   background: none;
@@ -17,7 +17,7 @@ const HideButton = styled.button`
 `;
 
 const ButtonIcon = styled.svg`
-  transform: ${({ isOpen }) => (isOpen ? "rotate(0deg)" : "rotate(180deg)")};
+  transform: ${({ $isOpen }) => ($isOpen ? "rotate(0deg)" : "rotate(180deg)")};
   transition: transform 0.3s ease-in-out;
 `;
 
@@ -30,7 +30,7 @@ const SidebarToggleButton = () => {
   };
 
   return (
-    <HideButton onClick={handleToggle} isOpen={isOpen}>
+    <HideButton onClick={handleToggle} $isOpen={isOpen}>
       <Icon name="tab-l" color="#525252"/>
     </HideButton>
   );

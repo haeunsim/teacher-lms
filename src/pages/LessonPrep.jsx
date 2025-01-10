@@ -16,7 +16,7 @@ const Flex = styled.div`
 
 const LeftWrap = styled.div`
   width: 70%;
-  padding: 35px 24px 35px ${(props) => (props.sidebarOpen ? "24px" : "60px")};
+  padding: 35px 24px 35px ${(props) => (props.$sidebarOpen ? "24px" : "60px")};
   transition: padding 0.3s ease-in-out;
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@ const LessonPrep = () => {
 
   return (
     <Flex>
-      <LeftWrap sidebarOpen={isOpen}>
+      <LeftWrap $sidebarOpen={isOpen}>
         <WorkListSection />
         <ChatTest />
       </LeftWrap>

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Icon from "../Icon/Icon";
 
-const InputWrap = styled.div`
+const SearchWrapper = styled.div`
+  position: relative;
   max-width: 500px;
   width: 100%;
   display: flex;
@@ -32,32 +33,28 @@ const InputWrap = styled.div`
     border-radius: 4px;
     font-size: 16px;
     font-weight: 500;
-    cursor: ${props => props.hasText ? 'pointer' : 'default'};
-    background: ${props => props.hasText ? '#2E90FF' : '#d2d2d2'};
-    color: ${props => props.hasText ? '#fff' : '#9a9a9a'};
+    cursor: ${(props) => (props.$hasText ? "pointer" : "default")};
+    background: ${(props) => (props.$hasText ? "#2E90FF" : "#d2d2d2")};
+    color: ${(props) => (props.$hasText ? "#fff" : "#9a9a9a")};
   }
 `;
 
 const SearchInput = () => {
-  const [inputText, setInputText] = React.useState('');
-
-  const handleInputChange = (e) => {
-    setInputText(e.target.value);
-  };
+  const [text, setText] = useState("");
 
   return (
-    <InputWrap hasText={inputText.length > 0}>
+    <SearchWrapper $hasText={!!text}>
       <div>
-        <Icon name="search" color="#525252"/>
-        <input 
-          placeholder="찾으실 '정답 키워드'를 입력해주세요." 
+        <Icon name="search" color="#525252" />
+        <input
+          placeholder="찾으실 '정답 키워드'를 입력해주세요."
           maxLength={255}
-          value={inputText}
-          onChange={handleInputChange}
+          value={text}
+          onChange={(e) => setText(e.target.value)}
         />
       </div>
       <button>검색</button>
-    </InputWrap>
+    </SearchWrapper>
   );
 };
 

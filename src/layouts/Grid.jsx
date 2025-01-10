@@ -93,8 +93,11 @@ const Flex = styled.div`
   display: flex;
 `;
 
-const Content = styled.div`
-  width: ${props => props.isListVisible ? '75%' : '100%'};
+const Content = styled.div.attrs(props => ({
+  style: {
+    width: props.isListVisible ? '75%' : '100%'
+  }
+}))`
   transition: width 0.3s ease;
 `;
 

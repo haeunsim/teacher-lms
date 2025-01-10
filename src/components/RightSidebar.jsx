@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { setSearchParams, setShowSubjectList } from "../redux/reducers/testSlice";
 
 const SidebarContainer = styled.div`
   max-width: 480px;
@@ -109,7 +111,9 @@ const TextButton = styled.div`
   border-radius: 4px;
   background: var(--LMS-Color-Main_Light, #88c0ff);
   color: #fff;
-`;
+  cursor: ${props => props.disabled ? 'default' : 'pointer'};
+  opacity: ${props => props.disabled ? 0.5 : 1};
+`
 
 const Flex = styled.div`
   display: flex;
@@ -127,7 +131,42 @@ const Flex = styled.div`
   }
 `;
 
+const RadioOption = ({ name, value, label, onChange }) => (
+  <label>
+    <input 
+      type="radio" 
+      name={name} 
+      value={value} 
+      onChange={onChange}
+    /> {label}
+  </label>
+);
+
 const RightSidebar = () => {
+  const dispatch = useDispatch();
+  const { showSubjectList, searchParams } = useSelector((state) => state.test);
+  
+  const [formData, setFormData] = useState({
+    publisher: '',
+    grade: '',
+    semester: '',
+    subject: ''
+  });
+
+  const isFormValid = Object.values(formData).every(value => value !== '');
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSearch = () => {
+    dispatch(setSearchParams(formData));
+    dispatch(setShowSubjectList(true));
+  };
+
   return (
     <SidebarContainer>
       <section>
@@ -139,108 +178,93 @@ const RightSidebar = () => {
           <RadioCell>
             <p>출판사</p>
             <Flex>
-              <label>
-                <input type="radio" name="publisher" value="천재" /> 천재
-              </label>
-              <label>
-                <input type="radio" name="publisher" value="비상" /> 비상
-              </label>
-              <label>
-                <input type="radio" name="publisher" value="미래엔" /> 미래엔
-              </label>
+              <RadioOption name="publisher" value="천재" label="천재" onChange={handleInputChange} />
+              <RadioOption name="publisher" value="비상" label="비상" onChange={handleInputChange} />
+              <RadioOption name="publisher" value="미래엔" label="미래엔" onChange={handleInputChange} />
             </Flex>
           </RadioCell>
 
           <RadioCell>
             <p>학년</p>
             <Flex>
-              <label>
-                <input type="radio" name="grade" value="3" /> 3학년
-              </label>
-              <label>
-                <input type="radio" name="grade" value="4" /> 4학년
-              </label>
+              <RadioOption name="grade" value="3" label="3학년" onChange={handleInputChange} />
+              <RadioOption name="grade" value="4" label="4학년" onChange={handleInputChange} />
             </Flex>
           </RadioCell>
 
           <RadioCell>
             <p>학기</p>
             <Flex>
-              <label>
-                <input type="radio" name="semester" value="1" /> 1학기
-              </label>
-              <label>
-                <input type="radio" name="semester" value="2" /> 2학기
-              </label>
+              <RadioOption name="semester" value="1" label="1학기" onChange={handleInputChange} />
+              <RadioOption name="semester" value="2" label="2학기" onChange={handleInputChange} />
             </Flex>
           </RadioCell>
 
           <RadioCell>
             <p>과목</p>
             <Flex>
-              <label>
-                <input type="radio" name="subject" value="국어" /> 국어
-              </label>
-              <label>
-                <input type="radio" name="subject" value="사회" /> 사회
-              </label>
-              <label>
-                <input type="radio" name="subject" value="과학" /> 과학
-              </label>
+              <RadioOption name="subject" value="국어" label="국어" onChange={handleInputChange} />
+              <RadioOption name="subject" value="사회" label="사회" onChange={handleInputChange} />
+              <RadioOption name="subject" value="과학" label="과학" onChange={handleInputChange} />
             </Flex>
           </RadioCell>
         </RadioList>
 
-        <TextButton>검색</TextButton>
+        <TextButton 
+          onClick={isFormValid ? handleSearch : undefined}
+          disabled={!isFormValid}
+        >검색</TextButton>
 
-        <SubjectList>
-          <Table>
-            <thead>
-              <tr>
-                <th style={{ width: "32%" }}>대단원</th>
-                <th style={{ width: "53%" }}>중단원</th>
-                <th style={{ width: "15%" }}>차시</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1. 힘과 우리 생활</td>
-                <td>물체를 움직여 볼까요?</td>
-                <td>1/10</td>
-              </tr>
-              <tr>
-                <td>1. 힘과 우리 생활</td>
-                <td>무게가 다른 물체를 밀고 당겨 볼까요?</td>
-                <td>2/10</td>
-              </tr>
-              <tr>
-                <td>1. 힘과 우리 생활</td>
-                <td>수평을 잡아요</td>
-                <td>3/10</td>
-              </tr>
-              <tr>
-                <td>1. 힘과 우리 생활</td>
-                <td>수평 잡기로 물체의 무게를 비교해 볼까요?</td>
-                <td>4/10</td>
-              </tr>
-              <tr>
-                <td>1. 힘과 우리 생활</td>
-                <td>무게를 정확히 비교해볼까요?</td>
-                <td>5/10</td>
-              </tr>
-              <tr>
-                <td>1. 힘과 우리 생활</td>
-                <td>용수철 저울로 무게를 비교해요</td>
-                <td>6/10</td>
-              </tr>
-              <tr>
-                <td>1. 힘과 우리 생활</td>
-                <td>지레를 이용해요</td>
-                <td>7/10</td>
-              </tr>
-            </tbody>
-          </Table>
-        </SubjectList>
+        {showSubjectList && (
+          <SubjectList>
+            <Table>
+              <thead>
+                <tr>
+                  <th style={{ width: "32%" }}>대단원</th>
+                  <th style={{ width: "53%" }}>중단원</th>
+                  <th style={{ width: "15%" }}>차시</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1. 힘과 우리 생활</td>
+                  <td>물체를 움직여 볼까요?</td>
+                  <td>1/10</td>
+                </tr>
+                <tr>
+                  <td>1. 힘과 우리 생활</td>
+                  <td>무게가 다른 물체를 밀고 당겨 볼까요?</td>
+                  <td>2/10</td>
+                </tr>
+                <tr>
+                  <td>1. 힘과 우리 생활</td>
+                  <td>수평을 잡아요</td>
+                  <td>3/10</td>
+                </tr>
+                <tr>
+                  <td>1. 힘과 우리 생활</td>
+                  <td>수평 잡기로 물체의 무게를 비교해 볼까요?</td>
+                  <td>4/10</td>
+                </tr>
+                <tr>
+                  <td>1. 힘과 우리 생활</td>
+                  <td>무게를 정확히 비교해볼까요?</td>
+                  <td>5/10</td>
+                </tr>
+                <tr>
+                  <td>1. 힘과 우리 생활</td>
+                  <td>용수철 저울로 무게를 비교해요</td>
+                  <td>6/10</td>
+                </tr>
+                <tr>
+                  <td>1. 힘과 우리 생활</td>
+                  <td>지레를 이용해요</td>
+                  <td>7/10</td>
+                </tr>
+              </tbody>
+            </Table>
+          </SubjectList>
+        )}
       </section>
     </SidebarContainer>
   );

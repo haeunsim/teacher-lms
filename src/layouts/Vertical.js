@@ -13,7 +13,7 @@ const VerticalLayout = () => {
 
   return (
     <div style={{ display: "flex", height: "100vh" }}>
-      <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+      <Sidebar $isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       <div style={{ flex: 1, overflow: "auto" }}>
         <main>
           <Outlet />

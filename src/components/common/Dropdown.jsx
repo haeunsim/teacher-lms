@@ -36,7 +36,7 @@ const DropdownList = styled.ul`
   top: 100%;
   left: 0;
   width: 100%;
-  background: white;
+  background: #fff;
   border: 1px solid #adadad;
   border-radius: 0 0 8px 8px;
   list-style: none;
@@ -46,10 +46,11 @@ const DropdownList = styled.ul`
 `;
 
 const DropdownItem = styled.li`
-  padding: 8px 16px;
+  padding: 10px 16px;
   cursor: pointer;
   text-align: center;
   border-bottom: 1px solid #ADADAD;
+  font-size: 16px;
 
   &:hover {
     background: rgba(196, 224, 255, 0.25);
