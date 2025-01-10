@@ -4,13 +4,6 @@ import ClassCalendar from "../components/ClassCalendar";
 import LineGraph from "../components/LineGraph";
 import styled from "styled-components";
 
-const Title = styled.h4`
-  font-size: 28px;
-  color: #525252;
-  font-weight: 500;
-  text-align: center;
-  padding-bottom: 16px;
-`
 const LessonManage = () => {
   let value = 48;
 
@@ -75,6 +68,14 @@ const LessonManage = () => {
   );
 };
 
+const Title = styled.h4`
+  font-size: 24px;
+  color: #525252;
+  font-weight: 500;
+  text-align: center;
+  padding-bottom: 20px;
+`
+
 const FlexContainer = styled.div`
   display: grid;
   grid-template-columns: 50% 50%;
@@ -85,6 +86,7 @@ const FlexContainer = styled.div`
     grid-template-columns: 100%;
   }
 `;
+
 const FlexItem = styled.div`
   border-bottom: 2px dashed #bababa;
   padding: 20px;
@@ -115,17 +117,19 @@ const FlexItem = styled.div`
     font-weight: 500;
   }
 `;
+
 const Card = styled.div`
   background: #f1f8ff;
-  margin: 20px 0;
   padding: 16px;
   border-radius: 20px;
 `;
+
 const ProgressBar = styled.div`
   background: #fff;
   padding: 30px 15px;
   border-radius: 10px;
 `
+
 const ProgressBarContainer = styled.div`
   width: 100%;
   height: 30px;
@@ -205,11 +209,23 @@ const BarLabel = styled.span`
 `;
 
 const Bar = styled.div`
-  width: ${(props) => props.width};
+  position: relative;
+  width: 100%;
   height: 20px;
-  background-color: ${(props) => props.color};
+  background-color: #fff;
   border-radius: 4px;
   flex-grow: 1;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: ${(props) => props.width};
+    height: 100%;
+    background-color: ${(props) => props.color};
+    border-radius: 4px;
+  }
 `;
 
 export default LessonManage;

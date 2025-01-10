@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import SearchInput from "../components/common/SearchInput";
-import { unitData } from "./unitData";
+import { unitData } from "../data/unitData";
 
 const Head = styled.div`
   width: 100%;

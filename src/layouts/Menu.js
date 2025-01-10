@@ -170,7 +170,7 @@ const Nav = styled.nav`
 `;
 
 const Header = styled.header`
-  height: 98px;
+  height: 60px;
   padding: 20px 24px;
   border-bottom: 1px solid #e5e5e5;
   display: flex;
@@ -204,9 +204,12 @@ const StyledLink = styled(Link)`
   align-items: center;
   color: ${({ $isActive }) => ($isActive ? '#fff' : '#525252')};
   background: ${({ $isActive }) => ($isActive ? '#2e90ff' : 'transparent')};
-  font-size: 16px;
   font-weight: 600;
   transition: all 0.3s ease;
+
+  span {
+    font-size: 16px;
+  }
 
   ${({ $hasChildren, $isOpen }) => $hasChildren && `
     &::after {
@@ -260,7 +263,8 @@ const FooterItem = styled.li`
   font-size: 16px;
   color: #525252;
   line-height: 1.5;
-
+  cursor: pointer;
+  
   &:first-child {
     font-weight: 600;
   }

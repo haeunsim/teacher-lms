@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import StudentChatHistory from '../components/StudentChatHistory';
 
 const ChatHistory = () => {
   const [selectedStudent, setSelectedStudent] = useState(null);
-  const navigate = useNavigate();
 
   const students = [
     { id: 1, name: "김민준", seat: 1 },
@@ -32,19 +31,15 @@ const ChatHistory = () => {
   const studentClick = (student) => {
     if (student) {
       setSelectedStudent?.(student);
-      // navigate(`/manage/student-chat-history`);
-      navigate('/manage/student-chat-history', {
-        state: { student }
-      });
     }
   };
 
   return (
     <Container>
       <Title>
-        <h2>3학년 1반</h2>
+        <h2> {!selectedStudent ? "3학년 1반" : "학생 채팅 기록 열람"}</h2>
       </Title>
-      <ClassRoom>
+      {!selectedStudent ?       <ClassRoom>
         {[1, 2, 3, 4, 5].map((row) => (
           <Row key={row}>
             {[1, 2, 3, 4].map((col) => {
@@ -63,6 +58,7 @@ const ChatHistory = () => {
           </Row>
         ))}
       </ClassRoom>
+      : <StudentChatHistory/> }
     </Container>
   );
 };

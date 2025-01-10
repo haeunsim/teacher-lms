@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 const Flex = styled.div`
   display: flex;
   justify-content: space-between;
+  width: 100%;
 
   @media screen and (max-width: 1200px) {
     flex-direction: column;
@@ -15,7 +16,7 @@ const Flex = styled.div`
 `;
 
 const LeftWrap = styled.div`
-  width: 70%;
+  flex: 0 0 70%;
   padding: 35px 24px 35px ${(props) => (props.$sidebarOpen ? "24px" : "60px")};
   transition: padding 0.3s ease-in-out;
   display: flex;

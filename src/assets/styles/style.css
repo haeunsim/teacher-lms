@@ -11,7 +11,7 @@ input,
 section {
   box-sizing: border-box;
 }
-input:focus {
+input:focus, select:focus {
   outline: none;
 }
 
@@ -31,6 +31,7 @@ a,
 button {
   margin: 0;
   padding: 0;
+  letter-spacing: -0.4px;
 }
 
 button {
@@ -66,35 +67,6 @@ button {
   line-height: 1.6;
   letter-spacing: -0.04em;
 }
-.sub-title {
-  color: #343434;
-  font-size: 22px;
-  font-weight: 600;
-}
-.text1 {
-  color: #343434;
-  font-size: 24px;
-  font-weight: 600;
-}
-.text3 {
-  color: #343434;
-  font-size: 20px;
-  font-weight: 400;
-}
-.caption {
-  color: #343434;
-  font-size: 13px;
-  font-weight: 400;
-  line-height: normal;
-  text-align: center;
-}
-.sm-point {
-  font-size: 18px;
-  color: #2e90ff;
-  font-weight: 600;
-  letter-spacing: -.2px;
-}
-
 
 section {
   display: flex;
@@ -143,6 +115,12 @@ p {
 span {
   font-size: 15px;
   line-height: 1.2;
+}
+.sm-point {
+  font-size: 18px;
+  color: #2e90ff;
+  font-weight: 600;
+  letter-spacing: -.2px;
 }
 
 /* border: "1px solid #e6e6e6" */

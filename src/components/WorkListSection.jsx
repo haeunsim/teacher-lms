@@ -113,8 +113,6 @@ const WorkListSection = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
 
-  const [mutedStates, setMutedStates] = useState(data.map(() => false));
-
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
@@ -125,13 +123,6 @@ const WorkListSection = () => {
       대단원: rowData.대단원,
       중단원: rowData.중단원
     }));
-  };
-
-  const toggleMute = (index) => {
-    const actualIndex = indexOfFirstItem + index; 
-    const newMutedStates = [...mutedStates];
-    newMutedStates[actualIndex] = !newMutedStates[actualIndex];
-    setMutedStates(newMutedStates);
   };
 
   const headers = [
@@ -155,13 +146,13 @@ const WorkListSection = () => {
     {
       label: "음소거",
       width: "7%",
-      // cell: () => <IconBtn name="check" />
-      cell: ({ rowIndex }) => (
-        <input
-          type="checkbox"
-          checked={mutedStates[indexOfFirstItem + rowIndex]}
-          onChange={() => toggleMute(rowIndex)}
-        />
+      cell: () => (
+        <div  style={{ display: "flex", justifyContent: "center" }}>
+          <IconBtn 
+            name="check"
+            color="#c0c0c0" // 선택 시 #2E90FF
+          />
+        </div>
       ),
     },
     {
@@ -172,7 +163,6 @@ const WorkListSection = () => {
           <IconBtn name="send" color="#2E90FF" />
         </div>
       ),
-      // URL 링크 공유 버튼
     },
   ];
 

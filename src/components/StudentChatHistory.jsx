@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import BasicTables from "../components/common/Table/BasicTable";
+import BasicTables from "./common/Table/BasicTable";
 import classNames from "classnames";
 import { useLocation } from "react-router-dom";
 
@@ -126,13 +126,10 @@ const StudentChatHistory = () => {
 
   return (
     <>
-      <Title>
-        <h2>학생 채팅 기록 열람</h2>
-      </Title>
       <Flex>
         <ChatList>
           <h4>
-            <span className="blue-text">{student?.name}</span> 채팅 수업 리스트{" "}
+            <span className="blue-text">{student?.name}</span> 채팅 수업 리스트
             <span className="small-text">(최신순)</span>
           </h4>
           <div>

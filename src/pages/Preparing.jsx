@@ -3,7 +3,10 @@ import ComingSoon from '../components/ComingSoon'
 
 const Preparing = () => {
   return (
-    <ComingSoon/>
+    // <ComingSoon/>
+    <>
+    
+    </>
   )
 }
 

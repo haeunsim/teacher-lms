@@ -1,65 +1,20 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { setSearchParams, setShowSubjectList } from "../redux/reducers/testSlice";
+import {
+  setSearchParams,
+  setShowSubjectList,
+} from "../redux/reducers/testSlice";
+import SearchFilter from "./SearchFilter";
 
 const SidebarContainer = styled.div`
-  max-width: 480px;
   width: 100%;
-  background: var(--main-light-30025, rgba(196, 224, 255, 0.25));
+  background: rgba(196, 224, 255, 0.25);
   padding: 40px 24px;
   text-align: center;
+  box-sizing: border-box;
+  overflow: hidden;
 `;
-
-const RadioList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-`;
-
-const RadioCell = styled.div`
-  border: 1px solid #adadad;
-  border-radius: 8px;
-  width: 100%;
-  padding: 8px 24px;
-  display: flex;
-  gap: 24px;
-  font-size: 18px;
-
-  p {
-    text-align: center;
-    width: 50px;
-  }
-
-  & input[type="radio"] {
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #9a9a9a;
-    border-radius: 50%;
-    margin: 0;
-    cursor: pointer;
-  }
-
-  & input[type="radio"]:checked {
-    border: 2px solid #2e90ff;
-    background: white;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    &::before {
-      content: "";
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      background: #2e90ff;
-      border-radius: 50%;
-    }
-  }
-`;
-
 const SubjectList = styled.div`
   border: 1px solid #88c0ff;
   border-radius: 8px;
@@ -79,16 +34,15 @@ const Table = styled.table`
 
   tr {
     td {
-      padding: 12px;
+      padding: 12px 6px;
       text-align: left;
       border-bottom: 1px solid #88c0ff;
       color: #292929;
-      font-size: 16px;
+      font-size: 15px;
 
       &:nth-child(1) {
         color: #525252;
-        font-size: 16px;
-        padding-left: 20px;
+        padding-left: 18px;
       }
       &:nth-child(3) {
         text-align: center;
@@ -111,54 +65,27 @@ const TextButton = styled.div`
   border-radius: 4px;
   background: var(--LMS-Color-Main_Light, #88c0ff);
   color: #fff;
-  cursor: ${props => props.disabled ? 'default' : 'pointer'};
-  opacity: ${props => props.disabled ? 0.5 : 1};
-`
-
-const Flex = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-
-  & label {
-    width: 80px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    gap: 8px;
-    font-size: 16px;
-  }
+  cursor: ${(props) => (props.disabled ? "default" : "pointer")};
+  opacity: ${(props) => (props.disabled ? 0.5 : 1)};
 `;
-
-const RadioOption = ({ name, value, label, onChange }) => (
-  <label>
-    <input 
-      type="radio" 
-      name={name} 
-      value={value} 
-      onChange={onChange}
-    /> {label}
-  </label>
-);
 
 const RightSidebar = () => {
   const dispatch = useDispatch();
   const { showSubjectList, searchParams } = useSelector((state) => state.test);
-  
+
   const [formData, setFormData] = useState({
-    publisher: '',
-    grade: '',
-    semester: '',
-    subject: ''
+    publisher: "",
+    grade: "",
+    semester: "",
+    subject: "",
   });
 
-  const isFormValid = Object.values(formData).every(value => value !== '');
+  const isFormValid = Object.values(formData).every((value) => value !== "");
 
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -174,46 +101,11 @@ const RightSidebar = () => {
           과목별 단원 구성 <span>(‘교사용 지도서’ 기준)</span>
         </h4>
 
-        <RadioList>
-          <RadioCell>
-            <p>출판사</p>
-            <Flex>
-              <RadioOption name="publisher" value="천재" label="천재" onChange={handleInputChange} />
-              <RadioOption name="publisher" value="비상" label="비상" onChange={handleInputChange} />
-              <RadioOption name="publisher" value="미래엔" label="미래엔" onChange={handleInputChange} />
-            </Flex>
-          </RadioCell>
+        <SearchFilter onInputChange={handleInputChange} />
 
-          <RadioCell>
-            <p>학년</p>
-            <Flex>
-              <RadioOption name="grade" value="3" label="3학년" onChange={handleInputChange} />
-              <RadioOption name="grade" value="4" label="4학년" onChange={handleInputChange} />
-            </Flex>
-          </RadioCell>
-
-          <RadioCell>
-            <p>학기</p>
-            <Flex>
-              <RadioOption name="semester" value="1" label="1학기" onChange={handleInputChange} />
-              <RadioOption name="semester" value="2" label="2학기" onChange={handleInputChange} />
-            </Flex>
-          </RadioCell>
-
-          <RadioCell>
-            <p>과목</p>
-            <Flex>
-              <RadioOption name="subject" value="국어" label="국어" onChange={handleInputChange} />
-              <RadioOption name="subject" value="사회" label="사회" onChange={handleInputChange} />
-              <RadioOption name="subject" value="과학" label="과학" onChange={handleInputChange} />
-            </Flex>
-          </RadioCell>
-        </RadioList>
-
-        <TextButton 
-          onClick={isFormValid ? handleSearch : undefined}
-          disabled={!isFormValid}
-        >검색</TextButton>
+        <TextButton onClick={isFormValid ? handleSearch : undefined}>
+          검색
+        </TextButton>
 
         {showSubjectList && (
           <SubjectList>

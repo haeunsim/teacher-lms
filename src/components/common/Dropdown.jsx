@@ -5,9 +5,8 @@ import Icon from "../Icon/Icon";
 const DropdownContainer = styled.div`
   position: relative;
   width: 100%;
-  border: 1px solid #adadad;
+  border: 1px solid #dadada;
   border-radius: 8px;
-  padding: 6px 14px;
   font-size: 20px;
 `;
 
@@ -16,10 +15,12 @@ const DropdownHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  height: 100%;
+  padding: 0 20px;
 
   span {
-    width: 28px;
-    height: 28px;
+    width: 20px;
+    height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -37,7 +38,7 @@ const DropdownList = styled.ul`
   left: 0;
   width: 100%;
   background: #fff;
-  border: 1px solid #adadad;
+  border: 1px solid #dadada;
   border-radius: 0 0 8px 8px;
   list-style: none;
   display: ${(props) => (props.isOpen ? "block" : "none")};
@@ -49,8 +50,9 @@ const DropdownItem = styled.li`
   padding: 10px 16px;
   cursor: pointer;
   text-align: center;
-  border-bottom: 1px solid #ADADAD;
-  font-size: 16px;
+  border-bottom: 1px solid #dadada;
+  font-size: 15px;
+  color: #525252;
 
   &:hover {
     background: rgba(196, 224, 255, 0.25);
@@ -60,14 +62,16 @@ const DropdownItem = styled.li`
   }
 `;
 
-const Dropdown = ({ label, options }) => {
+const Dropdown = ({ label, options, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState(">");
+  const [selected, setSelected] = useState(null);
 
+  console.log(selected)
   const toggleDropdown = () => setIsOpen(!isOpen);
 
   const handleSelect = (option) => {
     setSelected(option);
+    onSelect(option);
     setIsOpen(false);
   };
 
@@ -75,9 +79,13 @@ const Dropdown = ({ label, options }) => {
     <DropdownContainer>
       <DropdownHeader onClick={toggleDropdown}>
         <span></span>
-        { label ? <p>{label}</p> : <>selected</>}
+        {selected ? (
+          <>{selected ? <p>{selected}</p> : ""}</>
+        ) : (
+          <>{label ? <p>{label}</p> : ""}</>
+        )}
         <span>
-          <Icon name="chevron-right" color="#525252"/>
+          <Icon name="chevron-right" color="#cecece" />
         </span>
       </DropdownHeader>
 
