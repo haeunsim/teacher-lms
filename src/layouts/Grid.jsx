@@ -46,11 +46,17 @@ const GridItem = styled.div`
 `;
 
 const Head = styled.div`
+  width: 100%;
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 60px 24px 0;
+
+  @media screen and (max-width: 1200px) {
+    flex-direction: column;
+    justify-content: start;
+  }
 `;
 
 const Info = styled.div`
@@ -75,10 +81,8 @@ const Button = styled.button`
   background: #88c0ff;
   color: #fff;
   border-radius: 8px;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 600;
-
-
 `;
 
 const ToggleButton = styled.button`

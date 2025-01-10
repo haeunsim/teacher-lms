@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import SidebarToggleButton from '../components/SidebarToggleButton';
 import { findAllParent, findMenuItem } from '../helpers/menu';
 
-// Separate MenuItem component into its own file
 const MenuItem = ({ item, className }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const location = useLocation();
@@ -79,13 +78,18 @@ const MenuLink = ({ item, onClick, $hasChildren, $isOpen, $isActive }) => {
       $isOpen={$isOpen}
       $isActive={$isActive}
     >
-      {item.icon && <IconContainer>{item.icon}</IconContainer>}
+      {item.icon && (
+        <IconContainer>
+          {React.cloneElement(item.icon, {
+            color: $isActive ? '#fff' : '#525252'
+          })}
+        </IconContainer>
+      )}
       <span>{item.label}</span>
     </StyledLink>
   );
 };
 
-// Main AppMenu component
 const AppMenu = ({ menuItems }) => {
   const location = useLocation();
   const menuRef = React.useRef(null);

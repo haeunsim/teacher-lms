@@ -160,6 +160,7 @@ const LessonButton = styled.button`
   color: white;
   padding: 10px 30px;
   border-radius: 8px;
+  font-size: 16px;
 `;
 
 const UnitSelection = () => {
@@ -240,9 +241,9 @@ const UnitSelection = () => {
               <Depth1
                 onClick={() => toggleUnitTitle(unit.id)}
                 style={{
-                  background: expandedUnits[unit.id] ? "#7cb9ff" : "#fff",
+                  background: expandedUnits[unit.id] ? "#88c0ff" : "#fff",
                   borderRadius: expandedUnits[unit.id]
-                    ? "12px 12px 0 0"
+                    ? "10px 10px 0 0"
                     : "12px",
                 }}
               >

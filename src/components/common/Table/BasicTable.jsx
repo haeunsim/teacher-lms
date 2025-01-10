@@ -23,7 +23,7 @@ const Th = styled.th`
   font-weight: 600;
   border-right: 1px solid #d2d2d2;
   border-top: none;
-  font-size: 17px;
+  font-size: 16px;
   white-space: nowrap;
   
   &:nth-child(1) {
